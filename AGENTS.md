@@ -25,3 +25,5 @@
 - Versão vigente 0.3.0: ler docs/V030.md e a seção final de contexto. Não confundir planejamento antigo com estado implementado. Manter teste cliente manual pelo usuário.
 
 - Versão vigente 0.3.1: ler docs/V031.md. Armadura de terra usa renderer/UV vanilla; não regenerar os modelos dos bosses.
+
+- Versão vigente 0.3.2: áudios integrados no JAR por solicitação do usuário; não exigir pack local. Leia docs/V032.md. Preservar originais; exporter de áudio 0.3.2 deve ser o último se reexportar.

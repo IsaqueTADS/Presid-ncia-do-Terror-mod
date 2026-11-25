@@ -26,6 +26,7 @@ public class Terror implements ModInitializer {
  public void onInitialize(){
   DirtArmor.initialize();
   TerrorSounds.initialize();
+  PayloadTypeRegistry.playS2C().register(ModSoundPacket.ID,ModSoundPacket.CODEC);
   net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents.END_SERVER_TICK.register(Gun::tickReloads);
   FabricDefaultAttributeRegistry.register(LULA,President.attributes());FabricDefaultAttributeRegistry.register(BOLSONARO,President.attributes());
   Registry.register(Registries.ITEM_GROUP,id("items"),net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup.builder().displayName(net.minecraft.text.Text.literal("Presidência do Terror")).icon(()->new ItemStack(BEER)).entries((ctx,e)->{for(var item:new Item[]{REVOLVER,BAZOOKA,BULLET,MISSILE,BEER,ALCOHOL,LULA_EGG,BOLSONARO_EGG,DirtArmor.HELMET,DirtArmor.CHEST,DirtArmor.LEGS,DirtArmor.BOOTS})e.add(item);}).build());

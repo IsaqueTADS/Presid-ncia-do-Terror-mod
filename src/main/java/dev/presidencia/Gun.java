@@ -31,14 +31,14 @@ public class Gun extends Item {
   if(p.getWorld().isClient||reloadEnd(s)>0||rounds(s)>=capacity())return;
   if(!p.isCreative()&&p.getInventory().count(ammo())==0)return;
   var n=data(s);n.putLong("ReloadEnd",p.getWorld().getTime()+reloadTicks());put(s,n);ACTIVE.put(p.getUuid(),s);
-  p.getWorld().playSound(null,p.getBlockPos(),SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN,SoundCategory.PLAYERS,.6f,1.3f);
+  ModAudio.play(p.getWorld(),p.getPos(),TerrorSounds.get("reload"),ModAudio.WEAPON,.8f,1);
  }
  @Override public void inventoryTick(ItemStack s,World w,Entity e,int slot,boolean selected){
   if(w.isClient||!(e instanceof PlayerEntity p)||reloadEnd(s)==0)return;
   if(!selected||p.getMainHandStack()!=s||!p.isAlive()||ACTIVE.get(p.getUuid())!=s){cancel(s);return;}
   if(w.getTime()<reloadEnd(s))return;
   int add=capacity()-rounds(s);if(!p.isCreative()){add=Math.min(add,p.getInventory().count(ammo()));int remaining=add;for(int i=0;i<p.getInventory().size()&&remaining>0;i++){var a=p.getInventory().getStack(i);if(a.isOf(ammo())){int take=Math.min(remaining,a.getCount());a.decrement(take);remaining-=take;}}}
-  boolean full=rounds(s)==0&&add==capacity();rounds(s,rounds(s)+add);var cycle=data(s);cycle.putBoolean("FullCycle",full);cycle.putInt("CycleShots",0);put(s,cycle);cancel(s);ACTIVE.remove(p.getUuid());w.playSound(null,p.getBlockPos(),SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE,SoundCategory.PLAYERS,.7f,1.2f);
+  boolean full=rounds(s)==0&&add==capacity();rounds(s,rounds(s)+add);var cycle=data(s);cycle.putBoolean("FullCycle",full);cycle.putInt("CycleShots",0);put(s,cycle);cancel(s);ACTIVE.remove(p.getUuid());ModAudio.play(w,p.getPos(),SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE,ModAudio.WEAPON,.7f,1.2f);
  }
  private static void cancel(ItemStack s){var n=data(s);n.remove("ReloadEnd");put(s,n);}
  @Override public TypedActionResult<ItemStack> use(World w,PlayerEntity p,Hand h){
@@ -64,10 +64,10 @@ public class Gun extends Item {
    Vec3d segment=end.subtract(start);int marks=Math.max(1,(int)(segment.length()*5));
    for(int i=1;i<=marks;i++){Vec3d at=start.add(segment.multiply((double)i/marks));((ServerWorld)w).spawnParticles(new net.minecraft.particle.DustParticleEffect(new org.joml.Vector3f(1f,.8f,.25f),.55f),at.x,at.y,at.z,1,0,0,0,0);}
    ((ServerWorld)w).spawnParticles(net.minecraft.particle.ParticleTypes.CRIT,end.x,end.y,end.z,5,.07,.07,.07,.03);
-   if(hit!=null||wall.getType()!=HitResult.Type.MISS)w.playSound(null,end.x,end.y,end.z,TerrorSounds.get("impact"),SoundCategory.PLAYERS,.5f,1.4f);
+   if(hit!=null||wall.getType()!=HitResult.Type.MISS)ModAudio.play(w,end,TerrorSounds.get("impact"),ModAudio.WEAPON,.7f,1.4f);
    ((ServerWorld)w).spawnParticles(net.minecraft.particle.ParticleTypes.CRIT,start.x,start.y,start.z,8,.1,.1,.1,.2);
   }
-  w.playSound(null,p.getBlockPos(),bazooka?SoundEvents.ENTITY_FIREWORK_ROCKET_LAUNCH:SoundEvents.ENTITY_GENERIC_EXPLODE.value(),SoundCategory.PLAYERS,bazooka?1f:.5f,bazooka?.8f:1.8f);
+  ModAudio.play(w,p.getPos(),bazooka?SoundEvents.ENTITY_FIREWORK_ROCKET_LAUNCH:SoundEvents.ENTITY_GENERIC_EXPLODE.value(),ModAudio.WEAPON,bazooka?1f:.65f,bazooka?.8f:1.8f);
   return TypedActionResult.consume(s);
  }
  public static boolean lastBonus(ItemStack s){var n=data(s);return rounds(s)==1&&n.getBoolean("FullCycle")&&n.getInt("CycleShots")==5;}

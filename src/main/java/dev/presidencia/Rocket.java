@@ -18,7 +18,8 @@ public class Rocket extends ExplosiveProjectileEntity {
    // One explosion damage path: do not additionally apply direct-hit damage.
    var behavior=new net.minecraft.world.explosion.ExplosionBehavior(){@Override public float calculateDamage(net.minecraft.world.explosion.Explosion explosion,Entity entity){return Math.min(MAX_DAMAGE,super.calculateDamage(explosion,entity));}};
    var health=new java.util.HashMap<LivingEntity,Float>();for(var e:getWorld().getEntitiesByClass(LivingEntity.class,getBoundingBox().expand(5),e->e.isAlive()))health.put(e,e.getHealth());
-   getWorld().createExplosion(this,null,behavior,getX(),getY(),getZ(),2f,false,TerrorConfig.get().destroyBlocks?World.ExplosionSourceType.TNT:World.ExplosionSourceType.NONE);
+   getWorld().createExplosion(this,null,behavior,getX(),getY(),getZ(),2f,false,TerrorConfig.get().destroyBlocks?World.ExplosionSourceType.TNT:World.ExplosionSourceType.NONE,net.minecraft.particle.ParticleTypes.EXPLOSION,net.minecraft.particle.ParticleTypes.EXPLOSION_EMITTER,net.minecraft.registry.Registries.SOUND_EVENT.getEntry(TerrorSounds.get("silent")));
+   ModAudio.play(getWorld(),getPos(),net.minecraft.sound.SoundEvents.ENTITY_GENERIC_EXPLODE.value(),ModAudio.WEAPON,1,.9f);
    health.forEach((e,before)->DamageNumbers.show(e,before-e.getHealth(),e.getPos().add(0,e.getHeight()*.7,0),false,false));discard();
   }
  }

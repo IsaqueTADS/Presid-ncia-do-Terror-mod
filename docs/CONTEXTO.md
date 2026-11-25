@@ -156,3 +156,8 @@ Usuário autorizou executar a próxima versão. Confirmou bônus após tambor co
 ## Atualização 0.3.1
 
 Implementados pedidos de craft do álcool visível, náusea 30 s da cerveja, 128 cervejas no drop do Lula, armadura de terra superior à netherite com metade do dano de queda no conjunto completo, e spawn inicial apenas a partir do dia 1 do F3. HS/corpo já estavam distintos e foram preservados. Áudio revisto após relato de silêncio: intervalo 12–25 s, vozes também em ovos/combate e ativação automática do pack local se instalado. Sem novos áudios públicos. Documento vigente: [V031.md](V031.md). Fontes visuais de armadura por reskin vanilla; prévia/crafts versionados. Não aberto cliente Minecraft.
+
+
+## Atualização 0.3.2 — áudio direto no mod
+
+Inclusão de 13 memes no JAR autorizada expressamente pelo usuário. Retirada a dependência do resource pack; antigo pack é desmarcado na seleção, sem exclusão do arquivo. Áudio com ganho local por canal e atenuação própria, falas plenas até 24 blocos e decaimento até 64. Menu F8 com sliders geral/falas/montarias/armas e testes; configuração individual. Normalização e hashes em audio-v032.json; medições em assets/docs/audio-levels-v032.json. Detalhes vigentes: [V032.md](V032.md). Licenças das gravações não foram autenticadas; não declarar domínio público. Build não regenera sons. Não houve teste novo no cliente.

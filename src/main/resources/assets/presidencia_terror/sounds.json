@@ -109,30 +109,90 @@
     ]
   },
   "lula_food": {
-    "sounds": []
+    "replace": true,
+    "sounds": [
+      {
+        "name": "presidencia_terror:local_memes/lula_food_0"
+      },
+      {
+        "name": "presidencia_terror:local_memes/lula_food_1"
+      }
+    ]
   },
   "lula_taunt": {
-    "sounds": []
+    "replace": true,
+    "sounds": [
+      {
+        "name": "presidencia_terror:local_memes/lula_taunt_0"
+      },
+      {
+        "name": "presidencia_terror:local_memes/lula_taunt_1"
+      }
+    ]
   },
   "lula_react": {
-    "sounds": []
+    "replace": true,
+    "sounds": [
+      {
+        "name": "presidencia_terror:local_memes/lula_react_0"
+      }
+    ]
   },
   "bolsonaro_phone": {
-    "sounds": []
+    "replace": true,
+    "sounds": [
+      {
+        "name": "presidencia_terror:local_memes/bolsonaro_phone_0"
+      },
+      {
+        "name": "presidencia_terror:local_memes/bolsonaro_phone_1"
+      }
+    ]
   },
   "bolsonaro_laugh": {
-    "sounds": []
+    "replace": true,
+    "sounds": [
+      {
+        "name": "presidencia_terror:local_memes/bolsonaro_laugh_0"
+      }
+    ]
   },
   "bolsonaro_taunt": {
-    "sounds": []
+    "replace": true,
+    "sounds": [
+      {
+        "name": "presidencia_terror:local_memes/bolsonaro_taunt_0"
+      },
+      {
+        "name": "presidencia_terror:local_memes/bolsonaro_taunt_1"
+      }
+    ]
   },
   "lula_beer": {
-    "sounds": []
+    "replace": true,
+    "sounds": [
+      {
+        "name": "presidencia_terror:local_memes/lula_beer"
+      }
+    ]
   },
   "bolsonaro_defend": {
-    "sounds": []
+    "replace": true,
+    "sounds": [
+      {
+        "name": "presidencia_terror:local_memes/bolsonaro_defend"
+      }
+    ]
   },
   "bolsonaro_death": {
+    "replace": true,
+    "sounds": [
+      {
+        "name": "presidencia_terror:local_memes/bolsonaro_death"
+      }
+    ]
+  },
+  "silent": {
     "sounds": []
   }
 }

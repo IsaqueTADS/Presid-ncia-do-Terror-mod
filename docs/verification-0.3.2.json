@@ -1,0 +1,9 @@
+{
+  "version": "0.3.2",
+  "build": "passed",
+  "tests_passed": 28,
+  "failures": 0,
+  "embedded_voice_files": 13,
+  "jar_sha256": "595d78543ba8b4c7278a0efae8a879daf1d68f646a3265374c1daa1207737abe",
+  "client_test": "Not run; F8 screen, subjective audibility and pack migration need manual review"
+}

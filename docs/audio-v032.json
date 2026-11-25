@@ -1,0 +1,110 @@
+{
+  "files": [
+    {
+      "runtime": "src/main/resources/assets/presidencia_terror/sounds/local_memes/lula_food_0.ogg",
+      "source_pack_entry": "assets/presidencia_terror/sounds/local_memes/lula_food_0.ogg",
+      "original_sha256": "00cbc43d97e58205f7676d624e3dfb5ea359eb7b36385b3461feb258c62b3e9a",
+      "output_sha256": "16b6ceded3aac8ad4d1ecea1033bbb3fcfe378000672beb6121c3b4aa13d944d",
+      "licence": "Unverified; user explicitly requested direct integration",
+      "processing": "gentle compression, two-pass loudnorm -16 LUFS target, true peak -2 dBTP target, mono Vorbis 44100 Hz; original cut preserved"
+    },
+    {
+      "runtime": "src/main/resources/assets/presidencia_terror/sounds/local_memes/lula_food_1.ogg",
+      "source_pack_entry": "assets/presidencia_terror/sounds/local_memes/lula_food_1.ogg",
+      "original_sha256": "7836545e96d21dd9b779201ac5863a4e5bf337480170b25cca3db471423d8f33",
+      "output_sha256": "d259adba7e35140bba2d75fd591bce620b811eee8389a0d3395e177ce5f1db3d",
+      "licence": "Unverified; user explicitly requested direct integration",
+      "processing": "gentle compression, two-pass loudnorm -16 LUFS target, true peak -2 dBTP target, mono Vorbis 44100 Hz; original cut preserved"
+    },
+    {
+      "runtime": "src/main/resources/assets/presidencia_terror/sounds/local_memes/lula_taunt_0.ogg",
+      "source_pack_entry": "assets/presidencia_terror/sounds/local_memes/lula_taunt_0.ogg",
+      "original_sha256": "2e241f1034380f93408d8e47b951406feb0ce0c83616c62397027e6ab14e901f",
+      "output_sha256": "c64fceae8c323f0236a99c234b886f68b2f3aa56b07b9dc506433261de6ef0f9",
+      "licence": "Unverified; user explicitly requested direct integration",
+      "processing": "gentle compression, two-pass loudnorm -16 LUFS target, true peak -2 dBTP target, mono Vorbis 44100 Hz; original cut preserved"
+    },
+    {
+      "runtime": "src/main/resources/assets/presidencia_terror/sounds/local_memes/lula_taunt_1.ogg",
+      "source_pack_entry": "assets/presidencia_terror/sounds/local_memes/lula_taunt_1.ogg",
+      "original_sha256": "503341af4f90cb6b0ebd9598268ab11475dbfd8687db227c0bf9af33fc7dd496",
+      "output_sha256": "946edd097abff9da01c82c30cbef55d2a843b336f94e3485543002b02bb5c3a9",
+      "licence": "Unverified; user explicitly requested direct integration",
+      "processing": "gentle compression, two-pass loudnorm -16 LUFS target, true peak -2 dBTP target, mono Vorbis 44100 Hz; original cut preserved"
+    },
+    {
+      "runtime": "src/main/resources/assets/presidencia_terror/sounds/local_memes/lula_react_0.ogg",
+      "source_pack_entry": "assets/presidencia_terror/sounds/local_memes/lula_react_0.ogg",
+      "original_sha256": "b5ff6020665897b1d5f05ff197b4cbba398f9a1a5be2b2230610a7de19f5a40f",
+      "output_sha256": "efb64a4a5aea6cd864a2e4f8db9aa5fb38700d7c6a58d191d367860d743ee7a5",
+      "licence": "Unverified; user explicitly requested direct integration",
+      "processing": "gentle compression, two-pass loudnorm -16 LUFS target, true peak -2 dBTP target, mono Vorbis 44100 Hz; original cut preserved"
+    },
+    {
+      "runtime": "src/main/resources/assets/presidencia_terror/sounds/local_memes/bolsonaro_phone_0.ogg",
+      "source_pack_entry": "assets/presidencia_terror/sounds/local_memes/bolsonaro_phone_0.ogg",
+      "original_sha256": "56157e0981e698628fda0618454fde63f8d3711fc96167a60009396ed6f54845",
+      "output_sha256": "666c2ff205113107b3178426ac1df09047733f08243e99325e1b18cc5eab8ec0",
+      "licence": "Unverified; user explicitly requested direct integration",
+      "processing": "gentle compression, two-pass loudnorm -16 LUFS target, true peak -2 dBTP target, mono Vorbis 44100 Hz; original cut preserved"
+    },
+    {
+      "runtime": "src/main/resources/assets/presidencia_terror/sounds/local_memes/bolsonaro_phone_1.ogg",
+      "source_pack_entry": "assets/presidencia_terror/sounds/local_memes/bolsonaro_phone_1.ogg",
+      "original_sha256": "53deb21a177a423a7837fcff96ac0983ec592fb4746eb7cc7d515e8a2ad395fc",
+      "output_sha256": "cfde85b2ca7a73a64f9a0f1bf3132d9f9c243c24bec385725f100d4c5bd2ea89",
+      "licence": "Unverified; user explicitly requested direct integration",
+      "processing": "gentle compression, two-pass loudnorm -16 LUFS target, true peak -2 dBTP target, mono Vorbis 44100 Hz; original cut preserved"
+    },
+    {
+      "runtime": "src/main/resources/assets/presidencia_terror/sounds/local_memes/bolsonaro_laugh_0.ogg",
+      "source_pack_entry": "assets/presidencia_terror/sounds/local_memes/bolsonaro_laugh_0.ogg",
+      "original_sha256": "f85bcec3b36180c126c28998ceee852244b62be3961d0d855555e4bf54cf7f66",
+      "output_sha256": "9b3c843a4ca3fb0076e2d904ceed4ffe8aea2f421fa279a5ecbbf1d008cc1c3f",
+      "licence": "Unverified; user explicitly requested direct integration",
+      "processing": "gentle compression, two-pass loudnorm -16 LUFS target, true peak -2 dBTP target, mono Vorbis 44100 Hz; original cut preserved"
+    },
+    {
+      "runtime": "src/main/resources/assets/presidencia_terror/sounds/local_memes/bolsonaro_taunt_0.ogg",
+      "source_pack_entry": "assets/presidencia_terror/sounds/local_memes/bolsonaro_taunt_0.ogg",
+      "original_sha256": "e29428fb671b67485b4ca84ecbbbd462ce7216fedcfd9070274fc249efbde29b",
+      "output_sha256": "7337fdb38087fef4a5a1e2758c673b30c680a97497ee6d4c0f573a2753a634e1",
+      "licence": "Unverified; user explicitly requested direct integration",
+      "processing": "gentle compression, two-pass loudnorm -16 LUFS target, true peak -2 dBTP target, mono Vorbis 44100 Hz; original cut preserved"
+    },
+    {
+      "runtime": "src/main/resources/assets/presidencia_terror/sounds/local_memes/bolsonaro_taunt_1.ogg",
+      "source_pack_entry": "assets/presidencia_terror/sounds/local_memes/bolsonaro_taunt_1.ogg",
+      "original_sha256": "5ab171e9c1d0ca9f7e7dbdd43a476be1efef102652e9d821926a3787f9dfbed2",
+      "output_sha256": "0078c4de3fd4075953a0e75fc1bd4c9e8baf3b164dda04fce773d825bb6538e9",
+      "licence": "Unverified; user explicitly requested direct integration",
+      "processing": "gentle compression, two-pass loudnorm -16 LUFS target, true peak -2 dBTP target, mono Vorbis 44100 Hz; original cut preserved"
+    },
+    {
+      "runtime": "src/main/resources/assets/presidencia_terror/sounds/local_memes/lula_beer.ogg",
+      "source_pack_entry": "assets/presidencia_terror/sounds/local_memes/lula_beer.ogg",
+      "original_sha256": "26e49e3f299af4518a4473a8fddd7a38c12054cafd2a473e6355b4ce797b4863",
+      "output_sha256": "27deb1a35b6fa4d9e924e687f53a79d413b1ad2d0b4550d1045cf02214502756",
+      "licence": "Unverified; user explicitly requested direct integration",
+      "processing": "gentle compression, two-pass loudnorm -16 LUFS target, true peak -2 dBTP target, mono Vorbis 44100 Hz; original cut preserved"
+    },
+    {
+      "runtime": "src/main/resources/assets/presidencia_terror/sounds/local_memes/bolsonaro_defend.ogg",
+      "source_pack_entry": "assets/presidencia_terror/sounds/local_memes/bolsonaro_defend.ogg",
+      "original_sha256": "0a384209b6611e5e7d45a53aa51dfbf88c6bbae67bbb694a1a272fd12f22daf3",
+      "output_sha256": "0417cc53cc26a012703ed09d51c6d6cc21e605b349f2c2c646ecbed57bab62ca",
+      "licence": "Unverified; user explicitly requested direct integration",
+      "processing": "gentle compression, two-pass loudnorm -16 LUFS target, true peak -2 dBTP target, mono Vorbis 44100 Hz; original cut preserved"
+    },
+    {
+      "runtime": "src/main/resources/assets/presidencia_terror/sounds/local_memes/bolsonaro_death.ogg",
+      "source_pack_entry": "assets/presidencia_terror/sounds/local_memes/bolsonaro_death.ogg",
+      "original_sha256": "5f9d8d54cbf734b960c368133bf5d61ba103440954994ac462ae712697843f13",
+      "output_sha256": "d41a7999662e9131002c3636fe514769e2e1a96fb8295850cec0471cc105a420",
+      "licence": "Unverified; user explicitly requested direct integration",
+      "processing": "gentle compression, two-pass loudnorm -16 LUFS target, true peak -2 dBTP target, mono Vorbis 44100 Hz; original cut preserved"
+    }
+  ],
+  "note": "Original local pack preserved. User authorized inclusion directly in mod. Not a claim of a verified redistribution licence.",
+  "source_revision": "177ea58d4fd4081ba1b8ded1e013eeec85fff462"
+}

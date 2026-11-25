@@ -26,7 +26,7 @@ public class President extends PathAwareEntity {
  public boolean resting(){return restState>0;}
  public boolean visualMounted(){return mounted()&&!actionClip().equals("transform_cue");}
  private void cue(String clip,int ticks){dataTracker.set(CLIP,clip);dataTracker.set(CLIP_START,getWorld().getTime());clipTicks=ticks;}
- private void sound(String name,float volume,float pitch){if(name.startsWith("lula_")||name.startsWith("bolsonaro_"))return;getWorld().playSound(null,getX(),getY()+1,getZ(),TerrorSounds.get(name),SoundCategory.HOSTILE,volume,pitch);}
+ private void sound(String name,float volume,float pitch){if(name.startsWith("lula_")||name.startsWith("bolsonaro_"))return;ModAudio.play(getWorld(),getPos().add(0,1,0),TerrorSounds.get(name),ModAudio.MOUNT,volume,pitch);}
  private void stopRest(){if(restState<4){restState=lula()?5:4;cue(lula()?"stand_up":"wake_up",lula()?50:30);sound("swish",.5f,1);}}
  public boolean beginBeerMoment(){
   if(!lula()||getTarget()!=null||resting()||clipTicks>0||!isAlive())return false;
@@ -34,7 +34,7 @@ public class President extends PathAwareEntity {
  }
  private void tickAnimations(){
   if(voiceCooldown>0)voiceCooldown--;
-  if(actionClip().equals("drink_beer")){long elapsed=getWorld().getTime()-dataTracker.get(CLIP_START);if(elapsed>0&&elapsed<80&&elapsed%20==0)getWorld().playSound(null,getBlockPos(),SoundEvents.ENTITY_GENERIC_DRINK,SoundCategory.HOSTILE,.75f,1);}
+  if(actionClip().equals("drink_beer")){long elapsed=getWorld().getTime()-dataTracker.get(CLIP_START);if(elapsed>0&&elapsed<80&&elapsed%20==0)ModAudio.play(getWorld(),getPos().add(0,2,0),SoundEvents.ENTITY_GENERIC_DRINK,ModAudio.MOUNT,.9f,1);}
 
   if(clipTicks>0&&--clipTicks==0){
    String previous=actionClip();
@@ -66,7 +66,7 @@ public class President extends PathAwareEntity {
   }
  }
  @Override protected void playStepSound(BlockPos pos,BlockState state){sound(mounted()?(lula()?"donkey_step":"trex_step"):"human_step",mounted()?.55f:.3f,1);}
- @Override protected SoundEvent getHurtSound(DamageSource source){return TerrorSounds.get("creature_hurt");}
+ @Override protected SoundEvent getHurtSound(DamageSource source){return null;}
  public void clearAggression(){setTarget(null);aggressor=null;dataTracker.set(SHOT,-1);getNavigation().stop();}
  public boolean managed;public int generation;public UUID followed;
  private UUID aggressor;
@@ -80,7 +80,7 @@ public class President extends PathAwareEntity {
  @Override public EntityDimensions getBaseDimensions(EntityPose pose){return mounted()?EntityDimensions.changing(1.8f,lula()?4.8f:5.4f):super.getBaseDimensions(pose);}
  @Override public void onTrackedDataSet(TrackedData<?> key){super.onTrackedDataSet(key);if(key.equals(MOUNTED))calculateDimensions();}
  @Override public boolean damage(DamageSource source,float amount){boolean hurt=super.damage(source,amount);
-  if(hurt&&!getWorld().isClient){((ServerWorld)getWorld()).spawnParticles(new net.minecraft.particle.DustParticleEffect(new org.joml.Vector3f(.65f,.08f,.06f),.8f),getX(),getY()+getHeight()*.65,getZ(),12,.35,.4,.35,.04);}
+  if(hurt&&!getWorld().isClient){ModAudio.play(getWorld(),getPos().add(0,1,0),TerrorSounds.get("creature_hurt"),ModAudio.MOUNT,.8f,1);((ServerWorld)getWorld()).spawnParticles(new net.minecraft.particle.DustParticleEffect(new org.joml.Vector3f(.65f,.08f,.06f),.8f),getX(),getY()+getHeight()*.65,getZ(),12,.35,.4,.35,.04);}
  if(hurt&&!getWorld().isClient&&isAlive()&&source.getAttacker() instanceof LivingEntity attacker&&attacker!=this){if(!mounted()){dataTracker.set(MOUNTED,true);shotCooldown=300;cue("transform_cue",20);sound("transform",.8f,1);Voices.play(this,lula()?"lula_react":"bolsonaro_defend",true);}if(mounted()&&!actionClip().equals("transform_cue")&&voiceCooldown==0){Voices.play(this,lula()?"lula_react":"bolsonaro_taunt",false);voiceCooldown=160;}if(resting())stopRest();else if(!actionClip().equals("transform_cue"))cue("mount_reaction",24);setTarget(attacker);aggressor=attacker.getUuid();lostSight=0;}return hurt;}
  @Override public void tick(){
   super.tick();if(getWorld().isClient||!isAlive())return;tickAnimations();
@@ -98,11 +98,11 @@ public class President extends PathAwareEntity {
   if(mounted()&&!lula()){
    if(shotCooldown>0)shotCooldown--;
    dataTracker.set(SHOT,shotCooldown<=40?shotCooldown:shotCooldown>260?-(300-shotCooldown)-2:-1);
-   if(shotCooldown==40){getWorld().playSound(null,getBlockPos(),SoundEvents.BLOCK_NOTE_BLOCK_PLING.value(),SoundCategory.HOSTILE,1,.6f);sound("swish",.6f,1);}
+   if(shotCooldown==40){ModAudio.play(getWorld(),getPos(),SoundEvents.BLOCK_NOTE_BLOCK_PLING.value(),ModAudio.WEAPON,1,.6f);sound("swish",.6f,1);}
    if(shotCooldown==0&&canSee(target)){
     var direction=target.getEyePos().subtract(getEyePos()).normalize();
     Rocket.launch((ServerWorld)getWorld(),this,getEyePos(),direction);shotCooldown=300;
-    getWorld().playSound(null,getBlockPos(),SoundEvents.ENTITY_FIREWORK_ROCKET_LAUNCH,SoundCategory.HOSTILE,1,.7f);
+    ModAudio.play(getWorld(),getPos(),SoundEvents.ENTITY_FIREWORK_ROCKET_LAUNCH,ModAudio.WEAPON,1,.7f);
    }
   }
  }

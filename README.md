@@ -1,6 +1,6 @@
 # Presidência do Terror
 
-Versão **0.3.1** — Minecraft Java 1.21.1, Fabric e Java 21.
+Versão **0.3.2** — Minecraft Java 1.21.1, Fabric e Java 21.
 
 Uma dupla de Lula e Bolsonaro acompanha o jogador pelo mundo e entre dimensões, observa e fala memes. Atacá-los provoca transformação: Lula no jumento e Bolsonaro no T-Rex com bazuca. Cada conjunto tem 500 de vida. Os personagens podem descansar perto do jogador e recuperam a proximidade por teleporte, com intervalo de 30 s. A dupla é compartilhada pelo servidor, persistente e não reaparece depois de derrotada; ovos continuam disponíveis para testes manuais.
 
@@ -8,11 +8,14 @@ Há uma aba criativa própria com armas, munições, cerveja, álcool e ovos. Re
 
 Lula deixa Picanha (320 carnes cozidas renomeadas) e 128 cervejas; Bolsonaro deixa bazuca e 64 foguetes. Derrotar ambos da dupla automática concede Fim do mandato. Administradores podem usar /presidencia reset para reiniciar. Configuração do servidor em config/presidencia-terror.json.
 
-Instale Fabric Loader e Fabric API para 1.21.1 e substitua o JAR anterior por build/libs/presidencia-do-terror-0.3.1.jar em mods, tanto no cliente quanto no servidor. Não usar o JAR -sources. Memes só tocam com o pacote local opcional presidencia-memes-local.zip ativo em cada cliente; efeitos licenciados estão no JAR. As falas pendentes de licença não são distribuídas publicamente.
+Instale Fabric Loader e Fabric API para 1.21.1 e substitua o JAR anterior por build/libs/presidencia-do-terror-0.3.2.jar em mods, tanto no cliente quanto no servidor. Não usar o JAR -sources. Falas e efeitos estão integrados no JAR; resource pack separado não é necessário. F8 abre os controles individuais de áudio e os botões de teste.
 
 Leia [docs/V030.md](docs/V030.md) para regras, configuração e testes manuais. Build e 21 GameTests de servidor passaram; não houve teste novo no cliente Minecraft nem sessão prolongada de multiplayer/chunks reais descarregadas. Modelos e animações aprovados foram preservados.
 
 Para retomar o trabalho, leia [AGENTS.md](AGENTS.md) e [docs/CONTEXTO.md](docs/CONTEXTO.md). Mod e visual-assets têm históricos Git independentes. Use o Gradle Wrapper com JDK 21: gradlew.bat build e gradlew.bat runGametest. Build não regenera assets.
 
 
-0.3.1: início automático no dia 1, armadura de terra craftável, cerveja com náusea, álcool no livro de receitas e falas mais frequentes. Consulte [V031.md](docs/V031.md). Copie o pacote local presidencia-memes-local.zip para resourcepacks em cada cliente: será ativado automaticamente na inicialização.
+0.3.1: início automático no dia 1, armadura de terra craftável, cerveja com náusea, álcool no livro de receitas e falas mais frequentes. Consulte [V031.md](docs/V031.md). Na 0.3.2 esse pacote não é necessário e é retirado da seleção se estiver ativo.
+
+
+0.3.2: áudio integrado, falas audíveis até 24 blocos sem perda por distância e menu F8, independente da categoria Criaturas Hostis. Veja [V032.md](docs/V032.md) para regras, instalação e limites de verificação.
