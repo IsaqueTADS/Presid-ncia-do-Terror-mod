@@ -10,6 +10,12 @@ Registro em 25/11/2026 durante teste da 0.1.1. **Lista de pedidos, ainda não im
 6. Modelar **cerveja separadamente no Blockbench**, com fonte editável e textura no repositório de assets; definir recipiente/aparência com o usuário. Criar item e imagem do craft na bancada em previews, coerente com a receita efetivamente implementada.
 7. Proposta de craft de jogo: frasco de água + cana/açúcar produz um item intermediário de “álcool”; combinar com trigo para a cerveja. Proporções, frascos retornados, efeitos de consumo e desbloqueio ainda não definidos. É abstração de gameplay, não reprodução de fabricação real.
 
+8. Ao derrotar Bolsonaro, dropar **uma bazuca e um stack de foguetes da bazuca (64 unidades)**, no servidor e uma única vez por morte. Pedido registrado; ainda não implementado. A quantidade de munição carregada dentro da bazuca não foi definida.
+
+## Prioridade e progresso da cerveja
+
+O usuário pediu modelar a cerveja primeiro. Criada fonte separada `visual-assets/models/cerveja/cerveja.bbmodel`: garrafa âmbar, tampa dourada e rótulo de trigo, conferida no Blockbench, com PNG e prévia nativa. Craft/preview de receita, efeitos, integração e drops continuam pendentes; não tratar modelo criado como item já funcional. Não alterar o jogo que o usuário está testando.
+
 ## Pesquisa breve para a cerveja
 
 Cerveja costuma usar água, malte (normalmente cevada), lúpulo e levedura; a fermentação produz o álcool. Não é necessário adicionar álcool extraído de cana na fabricação normal. Trigo pode representar o cereal no Minecraft; a etapa intermediária sugerida permanece uma escolha ficcional de craft. Referência: https://www.wsetglobal.com/news-insights/insight-opinion/what-is-beer-a-beginner-s-guide/

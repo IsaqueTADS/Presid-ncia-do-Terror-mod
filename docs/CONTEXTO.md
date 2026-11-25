@@ -77,3 +77,8 @@ Adicionar decisões e pedidos novos à seção correspondente durante o trabalho
 ## Observações do usuário durante o teste manual
 
 Lista pendente em [FEEDBACK_TESTE_0.1.1.md](FEEDBACK_TESTE_0.1.1.md): remover mensagem de armas, barra amarela apenas durante recarga; tecla N configurável para dia real do F3 no canto superior esquerdo; feedback de dano e vida dos dois bosses; Lula dropar 320 carnes bovinas cozidas; modelar cerveja separada e preparar craft/preview com trigo, frasco de água e intermediário ficcional de álcool. Nenhuma dessas mudanças foi implementada nesta anotação. Bolsonaro transformando corretamente foi confirmado; testes continuam.
+
+
+## Cerveja modelada primeiro e drop do Bolsonaro
+
+Novo pedido: Bolsonaro derrotado deve dropar uma bazuca + um stack de 64 foguetes; registrado, não implementado. Prioridade cumprida de assets: cerveja separada em `visual-assets/models/cerveja/cerveja.bbmodel` (caminho a partir da pasta do projeto), PNG, OBJ/MTL e prévia nativa `visual-assets/previews/cerveja-blockbench.png`. Garrafa âmbar de 32 segmentos, tampa dourada e rótulo de trigo; UV corrigido e leitura conferida no Blockbench. Modelo ainda sem integração/craft/consumo; imagem de craft permanece para etapa seguinte. A 0.1.1 e os outros modelos foram preservados.
