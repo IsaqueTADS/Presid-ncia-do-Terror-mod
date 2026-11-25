@@ -14,6 +14,8 @@ Atualizado em 25/11/2026. Ponto de retomada para novos chats e após compactaç�
 
 ## Estado real de implementação
 
+**Próxima etapa: primeira versão jogável.** O usuário solicitou fechar a lista e as regras antes da implementação. Leia [V1.md](V1.md): armas funcionais, dois ovos sem spawn natural, transformação após golpe e perseguição. Lula ataca de perto no jumento; roubo de comida fica para depois. Bolsonaro no T-Rex usa bazuca, com 15 s entre tiros como proposta inicial do usuário. Foguetes destroem blocos, escolha confirmada. Valores de vida/dano, controles e regras de encerramento ainda são propostas. Não confundir esse planejamento com código concluído.
+
 Ainda **não há projeto Gradle, código Fabric, receitas registradas, combate funcional ou JAR**. A etapa atual é modelagem, animação, seleção de áudio e discussão das mecânicas. Assets existentes não significam funcionalidades já disponíveis no jogo.
 
 As referências de estrutura são os projetos Chicken Stalker e Michael Jackson do workspace. Reutilizar padrões técnicos quando fizer sentido, sem importar automaticamente suas mecânicas. Ao implementar: gameplay e inventário no servidor, audiovisual no cliente, compatibilidade com servidor dedicado e testes pertinentes. Integrar exports revisados com manifesto de revisão Git de origem e hashes; a build não deve regenerar o repositório de assets.
