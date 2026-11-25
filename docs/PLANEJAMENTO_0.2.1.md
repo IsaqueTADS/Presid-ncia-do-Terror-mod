@@ -20,3 +20,6 @@ Estado: coleta de pedidos. A versão jogável continua 0.2.0. Não implementar/p
 ## Próximos passos
 
 Continuar recebendo pedidos; depois apresentar propostas de logo e aplicações para avaliação antes de integrar o patch. Nenhuma logo foi produzida nem aplicada nesta etapa. Não mudar gameplay/caminhada por antecipação.
+
+
+Atualização: execução autorizada e concluída; ver BXE_0.2.1.md. A restrição de apenas listar acima era da etapa anterior.

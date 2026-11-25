@@ -18,4 +18,4 @@
 
 - Versão vigente 0.2.0: ler docs/V020.md e a seção final de docs/CONTEXTO.md; feedback anterior integrado, recorte de voz de morte aprovado pelo usuário. Teste manual a cargo do usuário.
 
-- Próxima 0.2.1 em planejamento: ler docs/PLANEJAMENTO_0.2.1.md. Usuário pediu somente listar os novos pedidos por enquanto.
+- Versão 0.2.1: identidade BXE Enterprise implementada após autorização. Ler docs/BXE_0.2.1.md; planejamento anterior é histórico.

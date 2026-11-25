@@ -105,3 +105,8 @@ O usuário informou o início de “pegaram meu telefone” em 3 s. Corte atuali
 ## Planejamento 0.2.1 e áudio aprovado
 
 Usuário aprovou por audição o corte bolsonaro_death de 3,00 s até o fim; fonte cortada preservada localmente e catalogada com hash. Outros cortes continuam sem aprovação. Próximo patch 0.2.1 em coleta de pedidos, sem alteração de versão/código/texturas agora. Identidade fictícia BXE Enterprise (também mencionada BX Enterprise, grafia final pendente), com verde, pilha e galinha para cerveja, bazuca e revólver. Referências preservadas em visual-assets/references/bxe-enterprise. Ver [PLANEJAMENTO_0.2.1.md](PLANEJAMENTO_0.2.1.md).
+
+
+## Estado vigente — 0.2.1
+
+Usuário autorizou executar BXE Enterprise. Marca aplicada aos três itens e às garrafas das duas atuações do Lula, com fonte SVG/pixel art, texturas e previews versionados. Animações, gameplay e receitas preservados. Itens estáticos conferidos no Blockbench; teste visual no Minecraft permanece manual. Detalhes em [BXE_0.2.1.md](BXE_0.2.1.md). Substitui a etapa anterior de coleta de pedidos. Corte bolsonaro_death aprovado pelo usuário.

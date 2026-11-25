@@ -1,6 +1,6 @@
 {
   "source_repository": "Presid-ncia-do-Terror-visual-assets",
-  "revision": "9b1048c11fe285034ce445043b4da20e2c995024",
+  "revision": "e4cb47dd41fee30519131815d1e23eb35004057d",
   "files": [
     {
       "source": "models/lula/lula.bbmodel",
@@ -28,15 +28,15 @@
     },
     {
       "source": "models/bazuca/bazuca.bbmodel",
-      "source_sha256": "0c4cad9090f92fec8db833026b5777151207737db911ddac6c6ae472c1a9ed99",
+      "source_sha256": "d0870497590e64686cc1ce109bf7cf497a18de708d9b7a70fbc8c68ebdbd837f",
       "runtime": "assets/presidencia_terror/rigs/bazuca.json",
-      "runtime_sha256": "9d86184ed0871d3dc3abac0452b94962f49b77800ff20bf5a0787f304a4bcbe0"
+      "runtime_sha256": "b37d1196b181c32c3387c45fa7905a01815579110ca86398ff14abcc97c7a829"
     },
     {
       "source": "models/revolver/revolver.bbmodel",
-      "source_sha256": "5a6a4d54eb3fd0f0007cb48a195bdd3c21330ca960a24f23e2eda6dd12c34800",
+      "source_sha256": "a19c4becfb959e0e4d6b498c640a73e9887f2cb4959263ab2212d081704d70a3",
       "runtime": "assets/presidencia_terror/rigs/revolver.json",
-      "runtime_sha256": "3f87ed1347ac15a86c598c11329bb580e4ceee4aa2cde887f9094147490b6dd5"
+      "runtime_sha256": "be37b419945988130bf6e06b984d36226394c9c4cc86577c397d20a418862671"
     },
     {
       "source": "models/municao_revolver/municao_revolver.bbmodel",
@@ -52,19 +52,19 @@
     },
     {
       "source": "models/lula_cerveja/lula_cerveja.bbmodel",
-      "source_sha256": "561adcb8acc732500f8b38decc56c21dd4cba2917c63c5d38428e2cfee372444",
+      "source_sha256": "afcc8f53938889bf0df5dbdbaf2baa8388919d4e71978594fba7cacdb814e6de",
       "runtime": "assets/presidencia_terror/rigs/lula_cerveja.json",
       "runtime_sha256": "c814cb620fbcdb787b392ce3cdd572c58735cf562cdbd7372a2e1248aa2806d3"
     },
     {
       "source": "models/lula_jumento_cerveja/lula_jumento_cerveja.bbmodel",
-      "source_sha256": "e75443aeda05f0b0fd2584e603642a0393cadaeedb46a276b5428f80dbb2d7a6",
+      "source_sha256": "f8314b61ee60458a16df36ba2825836c2a36f63489e811cb73f5c7df700e4fac",
       "runtime": "assets/presidencia_terror/rigs/lula_jumento_cerveja.json",
       "runtime_sha256": "f0d51e3629f54d66c434c7b9f81cccd2d674eb34a93e96cb277be411645e2de1"
     },
     {
       "source": "models/cerveja/cerveja.bbmodel",
-      "source_sha256": "7ef7e55584a561c7e408b9e5705b61e049910549bed73203beffdfce97bcf64a",
+      "source_sha256": "93271fe94828ad0f1ce079c7919ac6e468e4ffcf0fa623fd2de6418300d56032",
       "runtime": "assets/presidencia_terror/rigs/cerveja.json",
       "runtime_sha256": "00b705cf524a76338a1797b251aa8a35486983f3a6acf7b0c06f3d830c4215c9"
     }
