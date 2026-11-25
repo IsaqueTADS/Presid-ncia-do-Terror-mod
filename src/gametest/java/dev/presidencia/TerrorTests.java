@@ -119,6 +119,6 @@ public class TerrorTests implements FabricGameTest {
   for(int y=1;y<6;y++)c.setBlockState(2,y,4,Blocks.STONE);
   var s=new ItemStack(Terror.REVOLVER);p.setStackInHand(Hand.MAIN_HAND,s);Gun.rounds(s,2);Terror.REVOLVER.use(c.getWorld(),p,Hand.MAIN_HAND);c.assertEquals(e.getHealth(),500f,"Wall blocks hitscan");
   for(int y=1;y<6;y++)c.setBlockState(2,y,4,Blocks.AIR);
-  p.getItemCooldownManager().set(Terror.REVOLVER,0);Terror.REVOLVER.use(c.getWorld(),p,Hand.MAIN_HAND);c.assertEquals(e.getHealth(),494f,"Clear hit deals six damage");e.discard();c.complete();
+  p.getItemCooldownManager().set(Terror.REVOLVER,0);Terror.REVOLVER.use(c.getWorld(),p,Hand.MAIN_HAND);c.assertEquals(e.getHealth(),488f,"Clear hit deals twelve damage");e.discard();c.complete();
  }
 }

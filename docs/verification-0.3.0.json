@@ -1,0 +1,34 @@
+{
+  "version": "0.3.0",
+  "build": "passed",
+  "gametests": {
+    "passed": 21,
+    "failed": 0,
+    "names": [
+      "terrortests.alcoholreciperequireswaternotanypotion",
+      "terrortests.bazookagripstaysinhandandmuzzlefacesforward",
+      "terrortests.beermomentdoesnotinterruptcombatoraffectbolsonaro",
+      "terrortests.bossdeathdropsrequestedlootexactlyonce",
+      "terrortests.revolvercannotshootthroughwall",
+      "terrortests.revolverconsumesoneroundandrespectscooldown",
+      "terrortests.formspersistwithouthealing",
+      "terrortests.oldworldhealthmigratestofivehundred",
+      "terrortests.partialreloadloadsonlyavailableammo",
+      "terrortests.switchingweaponcancelsreload",
+      "v03tests.lulalastheadshotactuallyremovestwentytwo",
+      "terrortests.rockethitswallanddestroysblocks",
+      "v03tests.headvolumesexcludemounthead",
+      "v03tests.lastbulletrequiresfullcylindersequence",
+      "v03tests.managedstatepersistsacrossnbt",
+      "v03tests.partialreloadcannotearnbonus",
+      "v03tests.sharedpairrecoveryandvictory",
+      "v03tests.damagenumbershowsrealvalueandexpires",
+      "terrortests.sleepingmountwakesbeforechasing",
+      "terrortests.luladrinksthenswaysinbothforms",
+      "terrortests.bolsonarowaitsfifteensecondsbeforerocket"
+    ]
+  },
+  "jar_sha256": "314dde165aded2b29308800acf82f8a3faad2421358bc7e2ff8ab7bb6583ff0d",
+  "client_test": "Not run; user manual testing",
+  "recovery_scope": "Simulated body removal, stale body return and actual dimension transfer; not a prolonged two-client unloaded-chunk session"
+}

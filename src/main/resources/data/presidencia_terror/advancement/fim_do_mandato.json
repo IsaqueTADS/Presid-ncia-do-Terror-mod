@@ -1,0 +1,1 @@
+{"display":{"icon":{"id":"presidencia_terror:cerveja"},"title":"Fim do mandato","description":"Derrote Lula e Bolsonaro da dupla do mundo.","frame":"challenge","show_toast":true,"announce_to_chat":true,"background":"minecraft:textures/block/deepslate.png"},"criteria":{"victory":{"trigger":"minecraft:impossible"}}}

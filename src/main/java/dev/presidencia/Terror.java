@@ -1,5 +1,4 @@
 package dev.presidencia;
-
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
@@ -8,7 +7,6 @@ import net.minecraft.entity.*;
 import net.minecraft.item.*;
 import net.minecraft.registry.*;
 import net.minecraft.util.Identifier;
-
 public class Terror implements ModInitializer {
  public static final String ID="presidencia_terror";
  public static Identifier id(String path){return Identifier.of(ID,path);}
@@ -29,8 +27,9 @@ public class Terror implements ModInitializer {
   TerrorSounds.initialize();
   net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents.END_SERVER_TICK.register(Gun::tickReloads);
   FabricDefaultAttributeRegistry.register(LULA,President.attributes());FabricDefaultAttributeRegistry.register(BOLSONARO,President.attributes());
-  ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(e->{e.add(REVOLVER);e.add(BAZOOKA);e.add(BULLET);e.add(MISSILE);e.add(BEER);e.add(ALCOHOL);});
-  ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS).register(e->{e.add(LULA_EGG);e.add(BOLSONARO_EGG);});
+  Registry.register(Registries.ITEM_GROUP,id("items"),net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup.builder().displayName(net.minecraft.text.Text.literal("Presidência do Terror")).icon(()->new ItemStack(BEER)).entries((ctx,e)->{for(var item:new Item[]{REVOLVER,BAZOOKA,BULLET,MISSILE,BEER,ALCOHOL,LULA_EGG,BOLSONARO_EGG})e.add(item);}).build());
+  StalkerDirector.initialize();
+  net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents.END_SERVER_TICK.register(DamageNumbers::tick);
   PayloadTypeRegistry.playC2S().register(ReloadPacket.ID,ReloadPacket.CODEC);
   ServerPlayNetworking.registerGlobalReceiver(ReloadPacket.ID,(payload,ctx)->ctx.server().execute(()->{var p=ctx.player();if(p.getMainHandStack().getItem() instanceof Gun gun)gun.reload(p,p.getMainHandStack());}));
  }

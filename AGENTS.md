@@ -16,8 +16,10 @@
 - Ao interromper uma etapa, registre o que existe localmente, o que foi comitado/publicado e o que falta verificar. Confira Git e arquivos ao retomar; o resumo não substitui o estado real.
 - Preserve rascunhos e edições fora do escopo. Faça stage explícito apenas dos arquivos da tarefa concluída; não publique assets inacabados junto com uma atualização de documentação.
 
-- Versão vigente 0.2.0: ler docs/V020.md e a seção final de docs/CONTEXTO.md; feedback anterior integrado, recorte de voz de morte aprovado pelo usuário. Teste manual a cargo do usuário.
+- Histórico 0.2.0: ler docs/V020.md e a seção final de docs/CONTEXTO.md; feedback anterior integrado, recorte de voz de morte aprovado pelo usuário. Teste manual a cargo do usuário.
 
 - Versão 0.2.1: identidade BXE Enterprise implementada após autorização. Ler docs/BXE_0.2.1.md; planejamento anterior é histórico.
 
-- Versão atual 0.2.2: rótulos revisados aprovados pelo usuário; veja docs/CONTEXTO.md.
+- Histórico 0.2.2: rótulos revisados aprovados pelo usuário; veja docs/CONTEXTO.md.
+
+- Versão vigente 0.3.0: ler docs/V030.md e a seção final de contexto. Não confundir planejamento antigo com estado implementado. Manter teste cliente manual pelo usuário.

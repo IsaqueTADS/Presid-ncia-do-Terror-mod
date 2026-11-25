@@ -146,3 +146,8 @@ Novos pedidos registrados, sem implementar: spawn inicial automático da dupla, 
 ## Atualização oficial da lista 0.3 — combate
 
 Usuário aceitou as propostas anteriores de perseguição/descanso/multiplayer/falas/vitória e loot; passaram à lista oficial. Novo pedido: revólver base 12, última bala +50%, HS 17 e exceção último HS no Lula exatamente 22; tooltip explicativa e números flutuantes de dano para revólver/bazuca. Complementos e ambiguidades registrados em mod/docs/PLANEJAMENTO_0.3.md. Distância de três metros foi exemplo, não regra numérica. Bônus da última bala não se aplica automaticamente à bazuca de um foguete. Apenas planejamento; versão 0.2.2 e código mantidos.
+
+
+## Implementação 0.3.0
+
+Usuário autorizou executar a próxima versão. Confirmou bônus após tambor completo, acompanhamento entre dimensões e último HS genérico 25,5 (22 no Lula). Implementados aba criativa, dupla automática persistente, acompanhamento/teleporte, vitória/reset, descanso próximo, memes contextuais, Picanha e cerveja, dano/tooltip e números de dano. Fontes/modelos e áudios locais preservados; não regenerados. Documento vigente: [V030.md](V030.md). Planejamento anterior é histórico; sem bônus de distância, pois não houve valor definido. Cliente Minecraft não aberto, avaliação audiovisual/multiplayer final a cargo do usuário.

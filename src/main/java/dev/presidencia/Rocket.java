@@ -6,6 +6,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.server.world.ServerWorld;
 public class Rocket extends ExplosiveProjectileEntity {
+ public static final float MAX_DAMAGE=12;
  public Rocket(EntityType<? extends Rocket> type,World world){super(type,world);accelerationPower=0;}
  public static Rocket launch(ServerWorld w,LivingEntity owner,Vec3d pos,Vec3d direction){var r=new Rocket(Terror.ROCKET,w);r.setOwner(owner);r.setPosition(pos);r.setVelocity(direction.normalize().multiply(1.2));w.spawnEntity(r);return r;}
  @Override protected float getDrag(){return 1;}
@@ -15,8 +16,10 @@ public class Rocket extends ExplosiveProjectileEntity {
   if(!getWorld().isClient&&!isRemoved()&&hit.getType()!=HitResult.Type.MISS){
    setPosition(hit.getPos());
    // One explosion damage path: do not additionally apply direct-hit damage.
-   var behavior=new net.minecraft.world.explosion.ExplosionBehavior(){@Override public float calculateDamage(net.minecraft.world.explosion.Explosion explosion,Entity entity){return Math.min(12,super.calculateDamage(explosion,entity));}};
-   getWorld().createExplosion(this,null,behavior,getX(),getY(),getZ(),2f,false,World.ExplosionSourceType.TNT);discard();
+   var behavior=new net.minecraft.world.explosion.ExplosionBehavior(){@Override public float calculateDamage(net.minecraft.world.explosion.Explosion explosion,Entity entity){return Math.min(MAX_DAMAGE,super.calculateDamage(explosion,entity));}};
+   var health=new java.util.HashMap<LivingEntity,Float>();for(var e:getWorld().getEntitiesByClass(LivingEntity.class,getBoundingBox().expand(5),e->e.isAlive()))health.put(e,e.getHealth());
+   getWorld().createExplosion(this,null,behavior,getX(),getY(),getZ(),2f,false,TerrorConfig.get().destroyBlocks?World.ExplosionSourceType.TNT:World.ExplosionSourceType.NONE);
+   health.forEach((e,before)->DamageNumbers.show(e,before-e.getHealth(),e.getPos().add(0,e.getHeight()*.7,0),false,false));discard();
   }
  }
 }

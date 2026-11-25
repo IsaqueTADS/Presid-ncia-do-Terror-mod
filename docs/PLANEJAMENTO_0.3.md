@@ -68,3 +68,6 @@ Lógica de spawn/recuperação no servidor, com estado persistente e UUIDs das e
 8. Feedback de dano é cliente; acerto, parte atingida, bônus, morte e resultado numérico são decididos no servidor. Evitar que números de explosão sejam emitidos duas vezes pelo foguete/impacto.
 
 Decisões pendentes do combate: definição de última bala, último HS nos outros alvos (25,5?), regra de distância, prioridade de dano efetivo 22 no Lula e regras novas específicas da bazuca. Não confundir as propostas desta seção com as funcionalidades anteriores já aceitas.
+
+
+Implementação autorizada e decisões finais: bônus após tambor completo, acompanhamento entre dimensões e HS final 25,5 nos outros alvos confirmados pelo usuário. Estado implementado e verificação em [V030.md](V030.md); planejamento acima preservado como histórico.
