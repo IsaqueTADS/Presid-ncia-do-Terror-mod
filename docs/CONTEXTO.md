@@ -72,3 +72,8 @@ Pendências da etapa: receber avaliação do usuário sobre os itens revisados; 
 ## Como manter este documento
 
 Adicionar decisões e pedidos novos à seção correspondente durante o trabalho, atualizando estado e próximos passos ao encerrar ou interromper. Separar sempre **solicitado**, **proposto**, **implementado** e **verificado**. Quando uma decisão afetar assets, atualizar também o contexto do outro repositório. Não depender do histórico do chat para explicar o que precisa ser feito.
+
+
+## Observações do usuário durante o teste manual
+
+Lista pendente em [FEEDBACK_TESTE_0.1.1.md](FEEDBACK_TESTE_0.1.1.md): remover mensagem de armas, barra amarela apenas durante recarga; tecla N configurável para dia real do F3 no canto superior esquerdo; feedback de dano e vida dos dois bosses; Lula dropar 320 carnes bovinas cozidas; modelar cerveja separada e preparar craft/preview com trigo, frasco de água e intermediário ficcional de álcool. Nenhuma dessas mudanças foi implementada nesta anotação. Bolsonaro transformando corretamente foi confirmado; testes continuam.
