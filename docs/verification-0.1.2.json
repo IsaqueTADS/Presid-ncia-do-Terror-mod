@@ -1,0 +1,22 @@
+{
+  "version": "0.1.2",
+  "server_tests_passed": 12,
+  "tests": [
+    "terrortests.bazookagripstaysinhandandmuzzlefacesforward",
+    "terrortests.beermomentdoesnotinterruptcombatoraffectbolsonaro",
+    "terrortests.formspersistwithouthealing",
+    "terrortests.oldworldhealthmigratestofivehundred",
+    "terrortests.partialreloadloadsonlyavailableammo",
+    "terrortests.revolvercannotshootthroughwall",
+    "terrortests.revolverconsumesoneroundandrespectscooldown",
+    "terrortests.switchingweaponcancelsreload",
+    "terrortests.rockethitswallanddestroysblocks",
+    "terrortests.sleepingmountwakesbeforechasing",
+    "terrortests.luladrinksthenswaysinbothforms",
+    "terrortests.bolsonarowaitsfifteensecondsbeforerocket"
+  ],
+  "exported_rigs": 10,
+  "jar_sha256": "1b6d72dd764439c8b0a10cd81a2d1b43e80001aae49e6a2160a7987cdc0967eb",
+  "client_opened": false,
+  "visual_check": "On-foot variant inspected in Blockbench; complete mounted/in-game review pending."
+}

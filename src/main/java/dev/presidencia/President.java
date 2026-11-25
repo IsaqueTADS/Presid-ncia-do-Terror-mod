@@ -19,7 +19,7 @@ public class President extends PathAwareEntity {
  private static final TrackedData<Integer> SHOT=DataTracker.registerData(President.class,TrackedDataHandlerRegistry.INTEGER);
  private static final TrackedData<String> CLIP=DataTracker.registerData(President.class,TrackedDataHandlerRegistry.STRING);
  private static final TrackedData<Long> CLIP_START=DataTracker.registerData(President.class,TrackedDataHandlerRegistry.LONG);
- private int shotCooldown=300,meleeCooldown,lostSight,clipTicks,restState,restIdleTicks,moodIndex,nextMood=160,nextCombatVoice=180;
+ private int shotCooldown=300,meleeCooldown,lostSight,clipTicks,restState,restIdleTicks,moodIndex,nextMood=160,nextCombatVoice=180,nextBeer=600;
  public String actionClip(){return dataTracker.get(CLIP);}
  public float actionTime(float delta){return (getWorld().getTime()-dataTracker.get(CLIP_START)+delta)/20f;}
  public int restState(){return restState;}
@@ -28,9 +28,16 @@ public class President extends PathAwareEntity {
  private void cue(String clip,int ticks){dataTracker.set(CLIP,clip);dataTracker.set(CLIP_START,getWorld().getTime());clipTicks=ticks;}
  private void sound(String name,float volume,float pitch){getWorld().playSound(null,getX(),getY()+1,getZ(),TerrorSounds.get(name),SoundCategory.HOSTILE,volume,pitch);}
  private void stopRest(){if(restState<4){restState=lula()?5:4;cue(lula()?"stand_up":"wake_up",lula()?50:30);sound("swish",.5f,1);}}
+ public boolean beginBeerMoment(){
+  if(!lula()||getTarget()!=null||resting()||clipTicks>0||!isAlive())return false;
+  nextBeer=age+900+getRandom().nextInt(901);getNavigation().stop();cue("drink_beer",80);return true;
+ }
  private void tickAnimations(){
+  if(actionClip().equals("drink_beer")){long elapsed=getWorld().getTime()-dataTracker.get(CLIP_START);if(elapsed>0&&elapsed<80&&elapsed%20==0)getWorld().playSound(null,getBlockPos(),SoundEvents.ENTITY_GENERIC_DRINK,SoundCategory.HOSTILE,.75f,1);}
+
   if(clipTicks>0&&--clipTicks==0){
    String previous=actionClip();
+   if(previous.equals("drink_beer")){cue("tipsy_sway",100);return;}
    if(previous.equals("transform_cue")){cue("mount_reaction",24);return;}
    if(restState==1){restState=lula()?3:2;cue(lula()?"rest_sleep":"settle_sleep",lula()?Integer.MAX_VALUE:30);return;}
    if(restState==2){restState=3;cue("rest_sleep",Integer.MAX_VALUE);return;}
@@ -45,7 +52,8 @@ public class President extends PathAwareEntity {
    if(restState<=3){var nearby=getWorld().getClosestPlayer(this,10);if(getTarget()!=null){stopRest();}else if(nearby!=null&&!nearby.isSpectator()){setTarget(nearby);aggressor=nearby.getUuid();stopRest();}}
    return;
   }
-  if(mounted()&&isOnGround()&&restIdleTicks>=200&&getTarget()==null&&getWorld().getClosestPlayer(this,12)==null){restState=1;cue("lie_down",50);getNavigation().stop();return;}
+  if(lula()&&age>=nextBeer&&getTarget()==null&&!moving&&clipTicks==0&&isOnGround()&&beginBeerMoment())return;
+  if(mounted()&&clipTicks==0&&isOnGround()&&restIdleTicks>=200&&getTarget()==null&&getWorld().getClosestPlayer(this,12)==null){restState=1;cue("lie_down",50);getNavigation().stop();return;}
   if(getTarget()==null&&!moving&&clipTicks==0&&age>=nextMood){
    nextMood=age+180;
    String[] clips=mounted()?new String[]{"idle","look_around","mount_look_around","mouth_chatter",lula()?"bray":"roar","mount_reaction"}:new String[]{"look_around","startle",lula()?"steal_food":"protect_phone","idle"};
@@ -59,7 +67,7 @@ public class President extends PathAwareEntity {
  @Override protected void playStepSound(BlockPos pos,BlockState state){sound(mounted()?(lula()?"donkey_step":"trex_step"):"human_step",mounted()?.55f:.3f,1);}
  @Override protected SoundEvent getHurtSound(DamageSource source){return TerrorSounds.get("creature_hurt");}
  private UUID aggressor;
- public President(EntityType<? extends President> type,World world){super(type,world);setPersistent();}
+ public President(EntityType<? extends President> type,World world){super(type,world);setPersistent();nextBeer=600+getRandom().nextInt(601);}
  public boolean lula(){return getType()==Terror.LULA;}
  public boolean mounted(){return dataTracker.get(MOUNTED);}
  public int shotIn(){return dataTracker.get(SHOT);}
@@ -91,10 +99,11 @@ public class President extends PathAwareEntity {
    }
   }
  }
- @Override public void writeCustomDataToNbt(NbtCompound n){super.writeCustomDataToNbt(n);n.putBoolean("Mounted",mounted());n.putInt("RestState",restState);n.putInt("RestIdleTicks",restIdleTicks);n.putString("ActionClip",actionClip());n.putInt("ClipTicks",clipTicks);n.putInt("ShotCooldown",shotCooldown);if(aggressor!=null)n.putUuid("Aggressor",aggressor);}
+ @Override public void writeCustomDataToNbt(NbtCompound n){super.writeCustomDataToNbt(n);n.putInt("BeerDelay",Math.max(0,nextBeer-age));n.putBoolean("Mounted",mounted());n.putInt("RestState",restState);n.putInt("RestIdleTicks",restIdleTicks);n.putString("ActionClip",actionClip());n.putInt("ClipTicks",clipTicks);n.putInt("ShotCooldown",shotCooldown);if(aggressor!=null)n.putUuid("Aggressor",aggressor);}
  @Override public void readCustomDataFromNbt(NbtCompound n){super.readCustomDataFromNbt(n);dataTracker.set(MOUNTED,n.getBoolean("Mounted"));shotCooldown=Math.max(0,Math.min(300,n.getInt("ShotCooldown")));aggressor=n.containsUuid("Aggressor")?n.getUuid("Aggressor"):null;
   float oldMax=getMaxHealth(),oldHealth=getHealth();getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(500);if(oldMax<500)setHealth(Math.min(500,oldHealth+500-oldMax));
+  nextBeer=age+(n.contains("BeerDelay")?Math.clamp(n.getInt("BeerDelay"),20,1800):600);
   restState=Math.clamp(n.getInt("RestState"),0,5);restIdleTicks=Math.max(0,n.getInt("RestIdleTicks"));
-  if(restState>0){restState=3;cue("rest_sleep",Integer.MAX_VALUE);}else if(n.getInt("ClipTicks")>0)cue(n.getString("ActionClip"),Math.min(60,n.getInt("ClipTicks")));}
+  if(restState>0){restState=3;cue("rest_sleep",Integer.MAX_VALUE);}else if(n.getInt("ClipTicks")>0)cue(n.getString("ActionClip"),Math.min(100,n.getInt("ClipTicks")));}
  @Override public boolean cannotDespawn(){return true;}
 }

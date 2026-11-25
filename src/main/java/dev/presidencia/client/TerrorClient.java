@@ -43,13 +43,14 @@ public class TerrorClient implements ClientModInitializer {
   public Identifier getTexture(President e){return Terror.id("textures/rig/"+(e.lula()?"lula":"bolsonaro")+".png");}
   @Override public void render(President e,float yaw,float delta,MatrixStack ms,VertexConsumerProvider buffers,int light){
    String name=e.lula()?"lula":"bolsonaro";if(e.visualMounted())name+=e.lula()?"_jumento":"_trex";
+   if(e.lula()&&(e.actionClip().equals("drink_beer")||e.actionClip().equals("tipsy_sway")))name+="_cerveja";
    double dx=e.getX()-e.prevX,dz=e.getZ()-e.prevZ;double speed=dx*dx+dz*dz;boolean moving=speed>.00015;
    String clip=e.visualMounted()?(moving?(speed>.012?"mounted_run":"mounted_walk"):"mount_idle"):(moving?(speed>.0324?"run":"walk"):"idle");String gait=clip;float gaitTime=(e.age+delta)/20;float t=gaitTime;
    if(!e.actionClip().isEmpty()){clip=e.actionClip();t=e.actionTime(delta);}
    ms.push();ms.multiply(net.minecraft.util.math.RotationAxis.POSITIVE_Y.rotationDegrees(180-yaw));ms.scale(1/16f,1/16f,1/16f);
    int action=e.shotIn();float raised=e.visualMounted()&&!e.lula()?(action>=0?Math.min(1,(40-action+delta)/30f):action<=-2?Math.max(0,1-(-action-12+delta)/30f):0):-1;
    // Progress itself is linear; BazookaPose eases reach, grip and draw separately.
-   boolean overlay=moving&&!e.actionClip().isEmpty()&&!java.util.Set.of("lie_down","settle_sleep","rest_sleep","wake_up","stand_up","transform_cue").contains(clip);
+   boolean overlay=moving&&!e.actionClip().isEmpty()&&!java.util.Set.of("lie_down","settle_sleep","rest_sleep","wake_up","stand_up","transform_cue","drink_beer","tipsy_sway").contains(clip);
    BlockbenchModel.get(name).draw(ms,buffers,light,OverlayTexture.DEFAULT_UV,clip,t,-1,raised>0?raised:-1,overlay?gait:null,gaitTime);
    if(e.visualMounted()&&!e.lula()){
     // Separate prop preserves original character rig; telegraphed aim clears skull.

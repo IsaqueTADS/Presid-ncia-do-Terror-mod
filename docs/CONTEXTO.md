@@ -82,3 +82,8 @@ Lista pendente em [FEEDBACK_TESTE_0.1.1.md](FEEDBACK_TESTE_0.1.1.md): remover me
 ## Cerveja modelada primeiro e drop do Bolsonaro
 
 Novo pedido: Bolsonaro derrotado deve dropar uma bazuca + um stack de 64 foguetes; registrado, não implementado. Prioridade cumprida de assets: cerveja separada em `visual-assets/models/cerveja/cerveja.bbmodel` (caminho a partir da pasta do projeto), PNG, OBJ/MTL e prévia nativa `visual-assets/previews/cerveja-blockbench.png`. Garrafa âmbar de 32 segmentos, tampa dourada e rótulo de trigo; UV corrigido e leitura conferida no Blockbench. Modelo ainda sem integração/craft/consumo; imagem de craft permanece para etapa seguinte. A 0.1.1 e os outros modelos foram preservados.
+
+
+## Atuação de cerveja — 0.1.2
+
+Novo pedido implementado: Lula a pé e no jumento bebem cerveja ocasionalmente e passam por um balanço cômico curto. Variantes separadas `lula_cerveja` e `lula_jumento_cerveja`, clips `drink_beer` (4 s) e `tipsy_sway` (5 s); garrafa prop sem tampa. Som vanilla de beber, sem áudio externo. Primeira oportunidade de evento em 30–60 s e seguintes em 45–90 s, somente parado/no chão, fora de combate, sono ou outro gesto. Golpe interrompe. Navegação/velocidade, vida e inventário preservados; a garrafa ainda não é item craftável. Fonte e prévia detalhadas em `visual-assets/docs/LULA_CERVEJA.md` a partir da pasta do projeto. Conferência parcial no Blockbench da variante a pé e testes de servidor das duas formas; não foi aberto Minecraft cliente. Demais pendências da lista de feedback continuam pendentes.

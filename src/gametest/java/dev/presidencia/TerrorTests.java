@@ -9,6 +9,22 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.*;
 import net.minecraft.world.GameMode;
 public class TerrorTests implements FabricGameTest {
+ @GameTest(templateName=EMPTY_STRUCTURE,tickLimit=210)
+ public void lulaDrinksThenSwaysInBothForms(TestContext c){
+  var actors=new java.util.ArrayList<President>();
+  for(boolean mounted:new boolean[]{false,true}){
+   var e=Terror.LULA.create(c.getWorld());e.setAiDisabled(true);e.setNoGravity(true);e.setPosition(Vec3d.ofCenter(c.getAbsolutePos(new BlockPos(mounted?5:1,2,2))));
+   var n=new NbtCompound();e.writeCustomDataToNbt(n);n.putBoolean("Mounted",mounted);e.readCustomDataFromNbt(n);c.getWorld().spawnEntity(e);actors.add(e);
+   c.assertTrue(e.beginBeerMoment(),"Beer moment starts out of combat");c.assertEquals(e.actionClip(),"drink_beer","Drink action synchronized");
+  }
+  c.runAtTick(85,()->{for(var e:actors)c.assertEquals(e.actionClip(),"tipsy_sway","Drink transitions to short comic sway");});
+  c.runAtTick(190,()->{for(var e:actors){c.assertFalse(e.actionClip().equals("drink_beer")||e.actionClip().equals("tipsy_sway"),"Acting ends, does not loop forever");c.assertEquals(e.getHealth(),500f,"Beer does not alter health");e.discard();}c.complete();});
+ }
+ @GameTest(templateName=EMPTY_STRUCTURE,tickLimit=20)
+ public void beerMomentDoesNotInterruptCombatOrAffectBolsonaro(TestContext c){
+  var p=c.createMockPlayer(GameMode.SURVIVAL);var lula=Terror.LULA.create(c.getWorld());lula.setTarget(p);c.assertFalse(lula.beginBeerMoment(),"No drinking during combat");
+  var bolsonaro=Terror.BOLSONARO.create(c.getWorld());c.assertFalse(bolsonaro.beginBeerMoment(),"Gesture restricted to Lula");lula.discard();bolsonaro.discard();c.complete();
+ }
  @GameTest(templateName=EMPTY_STRUCTURE,tickLimit=110)
  public void sleepingMountWakesBeforeChasing(TestContext c){
   var e=Terror.BOLSONARO.create(c.getWorld());e.setAiDisabled(true);e.setNoGravity(true);e.setPosition(Vec3d.ofBottomCenter(c.getAbsolutePos(new BlockPos(2,1,2))));
