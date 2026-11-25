@@ -1,0 +1,1 @@
+{"schemaVersion":1,"id":"presidencia_tests","version":"1","environment":"*","entrypoints":{"fabric-gametest":["dev.presidencia.TerrorTests"]},"depends":{"presidencia_terror":"*","fabric-gametest-api-v1":"*"}}

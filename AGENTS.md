@@ -2,7 +2,7 @@
 
 - Alvo definido: Minecraft Java 1.21.1, Fabric e Java 21.
 - Ao iniciar ou retomar um chat, leia [docs/CONTEXTO.md](docs/CONTEXTO.md). Ele contém o conceito, o estado real, os pedidos e as pendências. Para trabalho audiovisual, leia também [o contexto de assets](../visual-assets/docs/CONTEXTO.md) quando o checkout irmão estiver disponível.
-- O usuário iniciou o planejamento da primeira versão jogável: leia [docs/V1.md](docs/V1.md). Ainda não há gameplay implementado. Já estão definidos ovos sem spawn natural, transformação após golpe, perseguição, Lula com ataque próximo e foguetes destruindo blocos. Não transformar propostas de balanceamento em decisões aprovadas.
+- A primeira implementação jogável é a 0.1.0. Leia [docs/TESTAR_V1.md](docs/TESTAR_V1.md) para comportamento, limites e testes; [docs/V1.md](docs/V1.md) conserva o planejamento original. Os valores propostos foram adotados como ponto inicial após autorização para executar. Modelos, tiro, recarga, munição visual, transformação e perseguição estão implementados; não confundir isso com aprovação final de balanceamento ou de todas as animações.
 - Quando começar a implementação, mantenha gameplay no servidor e cliente audiovisual separado. Integre somente exports revisados, com manifesto de revisão e hashes.
 - Git independente de ../visual-assets. Conventional Commits em inglês; não faça push sem autorização.
 - Sempre comite as mudanças concluídas deste repositório. A mesma regra vale no Git separado de assets; não crie commits vazios.

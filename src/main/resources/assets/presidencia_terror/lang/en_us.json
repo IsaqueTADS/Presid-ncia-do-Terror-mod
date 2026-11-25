@@ -1,0 +1,13 @@
+{
+  "key.presidencia_terror.reload": "Recarregar",
+  "category.presidencia_terror": "Presidência do Terror",
+  "entity.presidencia_terror.lula": "Lula",
+  "entity.presidencia_terror.bolsonaro": "Bolsonaro",
+  "entity.presidencia_terror.rocket": "Foguete",
+  "item.presidencia_terror.lula_spawn_egg": "Invocar Lula",
+  "item.presidencia_terror.bolsonaro_spawn_egg": "Invocar Bolsonaro",
+  "item.presidencia_terror.revolver": "Revólver",
+  "item.presidencia_terror.bazuca": "Bazuca",
+  "item.presidencia_terror.municao_revolver": "Cartuchos de revólver",
+  "item.presidencia_terror.foguete_bazuca": "Foguetes da bazuca"
+}

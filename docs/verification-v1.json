@@ -1,0 +1,29 @@
+{
+  "version": "0.1.0",
+  "gametests": [
+    "terrortests.formspersistwithouthealing",
+    "terrortests.partialreloadloadsonlyavailableammo",
+    "terrortests.revolvercannotshootthroughwall",
+    "terrortests.revolverconsumesoneroundandrespectscooldown",
+    "terrortests.switchingweaponcancelsreload",
+    "terrortests.rockethitswallanddestroysblocks",
+    "terrortests.bolsonarowaitsfifteensecondsbeforerocket"
+  ],
+  "gametests_passed": 7,
+  "runtime_rigs": 8,
+  "recipes": 4,
+  "chambers_front": 6,
+  "chambers_rear": 6,
+  "jar_sha256": "e49f5253945cd10f8d946fc5925fa30d0f293da2843b9f087616f0b2db799da0",
+  "limitations": [
+    "No two-client multiplayer session",
+    "Full animation and gameplay balance review pending"
+  ],
+  "client_observed": [
+    "Revolver points forward in first person",
+    "One loaded chamber visible during 1/6 reload",
+    "Six loaded chambers after completing reload",
+    "Bolsonaro transforms from on-foot model to T-Rex",
+    "Lula donkey mounted model renders"
+  ]
+}

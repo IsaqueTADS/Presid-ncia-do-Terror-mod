@@ -1,0 +1,54 @@
+{
+  "source_repository": "Presid-ncia-do-Terror-visual-assets",
+  "revision": "71688f044f87d9830eb10373f75fd4bed090b0c6",
+  "files": [
+    {
+      "source": "models/lula/lula.bbmodel",
+      "source_sha256": "9b04c830715b110ff67065f4b3a80ccc942a7af6dc39ebfd9239af62a80f9e22",
+      "runtime": "assets/presidencia_terror/rigs/lula.json",
+      "runtime_sha256": "81518bee665f8d3ba79b1b9e5d9766b8158eee3c8cb5af0e311dc7ce4be7b7ec"
+    },
+    {
+      "source": "models/bolsonaro/bolsonaro.bbmodel",
+      "source_sha256": "45d63575cce9388f0f8b8c0743dd3f2ba70370a0ab3cdbd2d720fdc7b85215c8",
+      "runtime": "assets/presidencia_terror/rigs/bolsonaro.json",
+      "runtime_sha256": "e3a2f6300cd20bf47c3b65690654eae659689d46e62847396520c395d4a13db4"
+    },
+    {
+      "source": "models/lula_jumento/lula_jumento.bbmodel",
+      "source_sha256": "87e8e6f6288cb08d2f7e9ae547eb204fa7ce7a080c804ec019ae9fa1bc654a0b",
+      "runtime": "assets/presidencia_terror/rigs/lula_jumento.json",
+      "runtime_sha256": "d0fe3f71340cb7e6a451274106fbf7116eeccc3d95387ddf41dd75276d6537c6"
+    },
+    {
+      "source": "models/bolsonaro_trex/bolsonaro_trex.bbmodel",
+      "source_sha256": "b0e1d7b72da82c2de2662fc7a415e108c6d6e1617333873a4a4b9f6674386828",
+      "runtime": "assets/presidencia_terror/rigs/bolsonaro_trex.json",
+      "runtime_sha256": "707aa689a5707ab64fa9d8dd0aad4b43771d39a29395179ed80672ed391dd499"
+    },
+    {
+      "source": "models/bazuca/bazuca.bbmodel",
+      "source_sha256": "0c4cad9090f92fec8db833026b5777151207737db911ddac6c6ae472c1a9ed99",
+      "runtime": "assets/presidencia_terror/rigs/bazuca.json",
+      "runtime_sha256": "9d86184ed0871d3dc3abac0452b94962f49b77800ff20bf5a0787f304a4bcbe0"
+    },
+    {
+      "source": "models/revolver/revolver.bbmodel",
+      "source_sha256": "5a6a4d54eb3fd0f0007cb48a195bdd3c21330ca960a24f23e2eda6dd12c34800",
+      "runtime": "assets/presidencia_terror/rigs/revolver.json",
+      "runtime_sha256": "3f87ed1347ac15a86c598c11329bb580e4ceee4aa2cde887f9094147490b6dd5"
+    },
+    {
+      "source": "models/municao_revolver/municao_revolver.bbmodel",
+      "source_sha256": "9df863e485ee87aa99cef890016119333b0eafcb876f7597f3ef077c529f031a",
+      "runtime": "assets/presidencia_terror/rigs/municao_revolver.json",
+      "runtime_sha256": "08be8e41b309da530ae4999478e247b3b837f143c979b3986c58b4d2b17e14a6"
+    },
+    {
+      "source": "models/foguete_bazuca/foguete_bazuca.bbmodel",
+      "source_sha256": "be4beeb2bb0260cce96e6b82c07f3935631bdf4562b214f4803906dc85a66ec0",
+      "runtime": "assets/presidencia_terror/rigs/foguete_bazuca.json",
+      "runtime_sha256": "319fded34ed4100401714b6de4ce69a2ebb5ad3238cde3326a8c8dae6274f06b"
+    }
+  ]
+}
