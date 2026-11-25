@@ -129,3 +129,10 @@ Reaplicar após o gerador antigo com tools/review_weapon_branding.py. Para prese
 ## Integração aprovada — 0.2.2
 
 Usuário autorizou atualizar o mod com os rótulos e selos revisados. Cerveja: CERVEJA na frente, símbolo/BXE/Enterprise no verso; armas com Enterprise abaixo de BXE. Integrar fontes atuais sem regenerar modelos, preservando revisões, animações e receitas. Exportador direcionado tools/integrate_reviewed_branding.py; manifesto de origem e hashes de texturas em mod/docs. Texturas físicas 512×512, UV lógico 128×128 compatível com a normalização do renderer. Aprovação substitui as pendências de avaliação/integrar acima. Versão 0.2.2 diferencia este JAR da 0.2.1 anterior. Verificação de empacotamento/build; cliente Minecraft não aberto, teste final permanece manual.
+
+
+## Pedido para a próxima versão — aba no inventário criativo
+
+Pedido confirmado, apenas registrado por enquanto: criar uma aba própria “Presidência do Terror” no inventário criativo, identificada por um ícone do mod. Ao clicar, reunir os itens do projeto: revólver, bazuca, munição do revólver, foguetes, cerveja, álcool e os dois ovos de invocação. Organizar os itens separadamente dos itens vanilla; na implementação revisar os registros atuais nas abas vanilla para evitar duplicação desnecessária. Arte exata do ícone ainda não definida; não confundir com mudança no inventário de sobrevivência.
+
+Não implementado nesta etapa. Versão e JAR permanecem 0.2.2; incluir no planejamento da próxima versão, sem número novo definido neste pedido.
