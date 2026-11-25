@@ -9,6 +9,28 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.*;
 import net.minecraft.world.GameMode;
 public class TerrorTests implements FabricGameTest {
+ @GameTest(templateName=EMPTY_STRUCTURE,tickLimit=30)
+ public void bossDeathDropsRequestedLootExactlyOnce(TestContext c){
+  var origin=Vec3d.ofCenter(c.getAbsolutePos(new BlockPos(3,3,3)));
+  for(var type:java.util.List.of(Terror.LULA,Terror.BOLSONARO)){
+   for(var item:c.getWorld().getEntitiesByClass(net.minecraft.entity.ItemEntity.class,new net.minecraft.util.math.Box(origin,origin).expand(10),e->true))item.discard();
+   var e=type.create(c.getWorld());e.setPosition(origin);c.getWorld().spawnEntity(e);e.damage(c.getWorld().getDamageSources().genericKill(),10000);
+   int meat=0,rockets=0,guns=0;
+   for(var item:c.getWorld().getEntitiesByClass(net.minecraft.entity.ItemEntity.class,new net.minecraft.util.math.Box(origin,origin).expand(10),i->true)){
+    var stack=item.getStack();if(stack.isOf(Items.COOKED_BEEF))meat+=stack.getCount();if(stack.isOf(Terror.MISSILE))rockets+=stack.getCount();if(stack.isOf(Terror.BAZOOKA))guns+=stack.getCount();
+   }
+   if(type==Terror.LULA)c.assertEquals(meat,320,"Five full stacks of cooked beef");else{c.assertEquals(guns,1,"One bazooka");c.assertEquals(rockets,64,"One stack of rockets");}
+   e.damage(c.getWorld().getDamageSources().genericKill(),10000);e.discard();
+  }c.complete();
+ }
+ @GameTest(templateName=EMPTY_STRUCTURE,tickLimit=20)
+ public void alcoholRecipeRequiresWaterNotAnyPotion(TestContext c){
+  var recipe=new AlcoholRecipe(net.minecraft.recipe.book.CraftingRecipeCategory.MISC);var water=new ItemStack(Items.POTION);water.set(net.minecraft.component.DataComponentTypes.POTION_CONTENTS,new net.minecraft.component.type.PotionContentsComponent(net.minecraft.potion.Potions.WATER));
+  var input=net.minecraft.recipe.input.CraftingRecipeInput.create(2,1,java.util.List.of(water,new ItemStack(Items.SUGAR_CANE)));
+  c.assertTrue(recipe.matches(input,c.getWorld()),"Water accepted");water.set(net.minecraft.component.DataComponentTypes.POTION_CONTENTS,new net.minecraft.component.type.PotionContentsComponent(net.minecraft.potion.Potions.HEALING));
+  c.assertFalse(recipe.matches(net.minecraft.recipe.input.CraftingRecipeInput.create(2,1,java.util.List.of(water,new ItemStack(Items.SUGAR_CANE))),c.getWorld()),"Healing potion rejected");
+  c.complete();
+ }
  @GameTest(templateName=EMPTY_STRUCTURE,tickLimit=210)
  public void lulaDrinksThenSwaysInBothForms(TestContext c){
   var actors=new java.util.ArrayList<President>();

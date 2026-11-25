@@ -21,22 +21,23 @@ public class TerrorClient implements ClientModInitializer {
  private long lastShot=-1000;
  private float recoilRemaining;
  public void onInitializeClient(){
+  TerrorHud.initialize();
   var key=KeyBindingHelper.registerKeyBinding(new KeyBinding("key.presidencia_terror.reload",InputUtil.Type.KEYSYM,GLFW.GLFW_KEY_R,"category.presidencia_terror"));
   ClientTickEvents.END_CLIENT_TICK.register(client->{
    while(key.wasPressed())if(client.player!=null&&client.currentScreen==null&&client.player.getMainHandStack().getItem() instanceof Gun&&ClientPlayNetworking.canSend(ReloadPacket.ID))ClientPlayNetworking.send(new ReloadPacket());
-   if(client.player!=null&&client.world!=null){var s=client.player.getMainHandStack();if(s.getItem() instanceof Gun gun){long shot=Gun.firedAt(s);if(shot!=lastShot&&client.world.getTime()-shot>=0&&client.world.getTime()-shot<5){recoilRemaining+=gun.bazooka?4:1.8f;lastShot=shot;}client.player.sendMessage(net.minecraft.text.Text.literal((gun.bazooka?"Bazuca ":"Revólver ")+Gun.rounds(s)+"/"+gun.capacity()+(Gun.reloadEnd(s)>0?" — Recarregando…":" — R: recarregar")),true);}else lastShot=-1000;}
+   if(client.player!=null&&client.world!=null){var s=client.player.getMainHandStack();if(s.getItem() instanceof Gun gun){long shot=Gun.firedAt(s);if(shot!=lastShot&&client.world.getTime()-shot>=0&&client.world.getTime()-shot<5){recoilRemaining+=gun.bazooka?4:1.8f;lastShot=shot;};}else lastShot=-1000;}
    if(client.player!=null&&recoilRemaining>0){float step=recoilRemaining*.5f;client.player.setPitch(Math.max(-90,client.player.getPitch()-step));recoilRemaining-=step;if(recoilRemaining<.015f)recoilRemaining=0;}
   });
-  for(var item:new net.minecraft.item.Item[]{Terror.REVOLVER,Terror.BAZOOKA,Terror.BULLET,Terror.MISSILE})BuiltinItemRendererRegistry.INSTANCE.register(item,TerrorClient::item);
+  for(var item:new net.minecraft.item.Item[]{Terror.REVOLVER,Terror.BAZOOKA,Terror.BULLET,Terror.MISSILE,Terror.BEER,Terror.ALCOHOL})BuiltinItemRendererRegistry.INSTANCE.register(item,TerrorClient::item);
   EntityRendererRegistry.register(Terror.LULA,PresidentRenderer::new);EntityRendererRegistry.register(Terror.BOLSONARO,PresidentRenderer::new);
   EntityRendererRegistry.register(Terror.ROCKET,RocketRenderer::new);
   ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(new SimpleSynchronousResourceReloadListener(){public Identifier getFabricId(){return Terror.id("rig_reload");}public void reload(ResourceManager manager){BlockbenchModel.clear();}});
  }
  private static void item(ItemStack s,ModelTransformationMode mode,MatrixStack matrices,VertexConsumerProvider buffers,int light,int overlay){
-  var client=net.minecraft.client.MinecraftClient.getInstance();float now=client.world==null?0:client.world.getTime()+client.getRenderTickCounter().getTickDelta(false);String name=s.isOf(Terror.BAZOOKA)?"bazuca":s.isOf(Terror.REVOLVER)?"revolver":s.isOf(Terror.BULLET)?"municao_revolver":"foguete_bazuca";
+  var client=net.minecraft.client.MinecraftClient.getInstance();float now=client.world==null?0:client.world.getTime()+client.getRenderTickCounter().getTickDelta(false);String name=s.isOf(Terror.BEER)||s.isOf(Terror.ALCOHOL)?"cerveja":s.isOf(Terror.BAZOOKA)?"bazuca":s.isOf(Terror.REVOLVER)?"revolver":s.isOf(Terror.BULLET)?"municao_revolver":"foguete_bazuca";
   String clip="idle";float t=now/20;int rounds=-1;
   if(s.getItem() instanceof Gun gun){rounds=Gun.rounds(s);if(Gun.reloadEnd(s)>0){clip="reload";t=Math.max(0,(now-(Gun.reloadEnd(s)-gun.reloadTicks()))/20);}else if(now-Gun.firedAt(s)>=0&&now-Gun.firedAt(s)<13){clip="fire";t=(now-Gun.firedAt(s))/20;}}
-  matrices.push();matrices.translate(.5,.5,.5);matrices.multiply(net.minecraft.util.math.RotationAxis.POSITIVE_Y.rotationDegrees(mode==ModelTransformationMode.GUI?135:0));matrices.multiply(net.minecraft.util.math.RotationAxis.POSITIVE_X.rotationDegrees(mode==ModelTransformationMode.GUI?-18:0));float scale=name.equals("bazuca")?.022f:name.equals("revolver")?.035f:name.equals("municao_revolver")?.14f:.065f;matrices.scale(scale,scale,scale);BlockbenchModel.get(name).draw(matrices,buffers,light,overlay,clip,t,rounds);matrices.pop();
+  matrices.push();matrices.translate(.5,.5,.5);matrices.multiply(net.minecraft.util.math.RotationAxis.POSITIVE_Y.rotationDegrees(mode==ModelTransformationMode.GUI?135:0));matrices.multiply(net.minecraft.util.math.RotationAxis.POSITIVE_X.rotationDegrees(mode==ModelTransformationMode.GUI?-18:0));float scale=name.equals("bazuca")?.022f:name.equals("revolver")?.035f:name.equals("municao_revolver")?.14f:name.equals("cerveja")?.045f:.065f;matrices.scale(scale,scale,scale);BlockbenchModel.get(name).draw(matrices,buffers,light,overlay,clip,t,rounds);matrices.pop();
  }
  private static class PresidentRenderer extends EntityRenderer<President>{
   PresidentRenderer(EntityRendererFactory.Context ctx){super(ctx);shadowRadius=1;}
@@ -51,7 +52,7 @@ public class TerrorClient implements ClientModInitializer {
    int action=e.shotIn();float raised=e.visualMounted()&&!e.lula()?(action>=0?Math.min(1,(40-action+delta)/30f):action<=-2?Math.max(0,1-(-action-12+delta)/30f):0):-1;
    // Progress itself is linear; BazookaPose eases reach, grip and draw separately.
    boolean overlay=moving&&!e.actionClip().isEmpty()&&!java.util.Set.of("lie_down","settle_sleep","rest_sleep","wake_up","stand_up","transform_cue","drink_beer","tipsy_sway").contains(clip);
-   BlockbenchModel.get(name).draw(ms,buffers,light,OverlayTexture.DEFAULT_UV,clip,t,-1,raised>0?raised:-1,overlay?gait:null,gaitTime);
+   BlockbenchModel.get(name).draw(ms,buffers,light,OverlayTexture.getUv(0,e.hurtTime>0||e.deathTime>0),clip,t,-1,raised>0?raised:-1,overlay?gait:null,gaitTime);
    if(e.visualMounted()&&!e.lula()){
     // Separate prop preserves original character rig; telegraphed aim clears skull.
     ms.push();float aim=raised;

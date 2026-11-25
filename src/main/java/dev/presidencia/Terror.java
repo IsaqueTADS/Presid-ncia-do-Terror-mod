@@ -15,6 +15,9 @@ public class Terror implements ModInitializer {
  private static EntityType<President> president(String name){return Registry.register(Registries.ENTITY_TYPE,id(name),EntityType.Builder.create(President::new,SpawnGroup.CREATURE).dimensions(1.1f,3.2f).eyeHeight(2.8f).maxTrackingRange(96).build(ID+":"+name));}
  public static final EntityType<President> LULA=president("lula"), BOLSONARO=president("bolsonaro");
  public static final EntityType<Rocket> ROCKET=Registry.register(Registries.ENTITY_TYPE,id("rocket"),EntityType.Builder.<Rocket>create(Rocket::new,SpawnGroup.MISC).dimensions(.3f,.3f).trackingTickInterval(1).maxTrackingRange(96).build(ID+":rocket"));
+ public static final Item BEER=item("cerveja",new DrinkItem());
+ public static final Item ALCOHOL=item("alcool",new Item(new Item.Settings().maxCount(16)));
+ public static final net.minecraft.recipe.RecipeSerializer<AlcoholRecipe> ALCOHOL_RECIPE=Registry.register(Registries.RECIPE_SERIALIZER,id("alcool"),new net.minecraft.recipe.SpecialRecipeSerializer<>(AlcoholRecipe::new));
  public static final Item BULLET=item("municao_revolver",new Item(new Item.Settings()));
  public static final Item MISSILE=item("foguete_bazuca",new Item(new Item.Settings()));
  public static final Gun REVOLVER=(Gun)item("revolver",new Gun(false));
@@ -26,7 +29,7 @@ public class Terror implements ModInitializer {
   TerrorSounds.initialize();
   net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents.END_SERVER_TICK.register(Gun::tickReloads);
   FabricDefaultAttributeRegistry.register(LULA,President.attributes());FabricDefaultAttributeRegistry.register(BOLSONARO,President.attributes());
-  ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(e->{e.add(REVOLVER);e.add(BAZOOKA);e.add(BULLET);e.add(MISSILE);});
+  ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(e->{e.add(REVOLVER);e.add(BAZOOKA);e.add(BULLET);e.add(MISSILE);e.add(BEER);e.add(ALCOHOL);});
   ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS).register(e->{e.add(LULA_EGG);e.add(BOLSONARO_EGG);});
   PayloadTypeRegistry.playC2S().register(ReloadPacket.ID,ReloadPacket.CODEC);
   ServerPlayNetworking.registerGlobalReceiver(ReloadPacket.ID,(payload,ctx)->ctx.server().execute(()->{var p=ctx.player();if(p.getMainHandStack().getItem() instanceof Gun gun)gun.reload(p,p.getMainHandStack());}));

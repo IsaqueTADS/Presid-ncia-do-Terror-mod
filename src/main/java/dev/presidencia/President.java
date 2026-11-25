@@ -19,7 +19,7 @@ public class President extends PathAwareEntity {
  private static final TrackedData<Integer> SHOT=DataTracker.registerData(President.class,TrackedDataHandlerRegistry.INTEGER);
  private static final TrackedData<String> CLIP=DataTracker.registerData(President.class,TrackedDataHandlerRegistry.STRING);
  private static final TrackedData<Long> CLIP_START=DataTracker.registerData(President.class,TrackedDataHandlerRegistry.LONG);
- private int shotCooldown=300,meleeCooldown,lostSight,clipTicks,restState,restIdleTicks,moodIndex,nextMood=160,nextCombatVoice=180,nextBeer=600;
+ private int shotCooldown=300,meleeCooldown,lostSight,clipTicks,restState,restIdleTicks,moodIndex,nextMood=160,nextCombatVoice=180,nextBeer=600,voiceCooldown;
  public String actionClip(){return dataTracker.get(CLIP);}
  public float actionTime(float delta){return (getWorld().getTime()-dataTracker.get(CLIP_START)+delta)/20f;}
  public int restState(){return restState;}
@@ -33,11 +33,12 @@ public class President extends PathAwareEntity {
   nextBeer=age+900+getRandom().nextInt(901);getNavigation().stop();cue("drink_beer",80);return true;
  }
  private void tickAnimations(){
+  if(voiceCooldown>0)voiceCooldown--;
   if(actionClip().equals("drink_beer")){long elapsed=getWorld().getTime()-dataTracker.get(CLIP_START);if(elapsed>0&&elapsed<80&&elapsed%20==0)getWorld().playSound(null,getBlockPos(),SoundEvents.ENTITY_GENERIC_DRINK,SoundCategory.HOSTILE,.75f,1);}
 
   if(clipTicks>0&&--clipTicks==0){
    String previous=actionClip();
-   if(previous.equals("drink_beer")){cue("tipsy_sway",100);return;}
+   if(previous.equals("drink_beer")){cue("tipsy_sway",100);sound("lula_beer",.9f,1);voiceCooldown=140;return;}
    if(previous.equals("transform_cue")){cue("mount_reaction",24);return;}
    if(restState==1){restState=lula()?3:2;cue(lula()?"rest_sleep":"settle_sleep",lula()?Integer.MAX_VALUE:30);return;}
    if(restState==2){restState=3;cue("rest_sleep",Integer.MAX_VALUE);return;}
@@ -76,7 +77,9 @@ public class President extends PathAwareEntity {
  @Override protected void initDataTracker(DataTracker.Builder b){super.initDataTracker(b);b.add(MOUNTED,false);b.add(SHOT,-1);b.add(CLIP,"");b.add(CLIP_START,0L);}
  @Override public EntityDimensions getBaseDimensions(EntityPose pose){return mounted()?EntityDimensions.changing(1.8f,lula()?4.8f:5.4f):super.getBaseDimensions(pose);}
  @Override public void onTrackedDataSet(TrackedData<?> key){super.onTrackedDataSet(key);if(key.equals(MOUNTED))calculateDimensions();}
- @Override public boolean damage(DamageSource source,float amount){boolean hurt=super.damage(source,amount);if(hurt&&!getWorld().isClient&&isAlive()&&source.getAttacker() instanceof LivingEntity attacker&&attacker!=this){if(!mounted()){dataTracker.set(MOUNTED,true);shotCooldown=300;cue("transform_cue",20);sound("transform",.8f,1);sound(lula()?"lula_react":"bolsonaro_laugh",.8f,1);}if(resting())stopRest();else if(!actionClip().equals("transform_cue"))cue("mount_reaction",24);setTarget(attacker);aggressor=attacker.getUuid();lostSight=0;}return hurt;}
+ @Override public boolean damage(DamageSource source,float amount){boolean hurt=super.damage(source,amount);
+  if(hurt&&!getWorld().isClient){((ServerWorld)getWorld()).spawnParticles(new net.minecraft.particle.DustParticleEffect(new org.joml.Vector3f(.65f,.08f,.06f),.8f),getX(),getY()+getHeight()*.65,getZ(),12,.35,.4,.35,.04);if(isAlive()&&!lula()&&voiceCooldown==0){sound("bolsonaro_defend",.9f,1);voiceCooldown=140;}}
+ if(hurt&&!getWorld().isClient&&isAlive()&&source.getAttacker() instanceof LivingEntity attacker&&attacker!=this){if(!mounted()){dataTracker.set(MOUNTED,true);shotCooldown=300;cue("transform_cue",20);sound("transform",.8f,1);if(lula())sound("lula_react",.8f,1);}if(resting())stopRest();else if(!actionClip().equals("transform_cue"))cue("mount_reaction",24);setTarget(attacker);aggressor=attacker.getUuid();lostSight=0;}return hurt;}
  @Override public void tick(){
   super.tick();if(getWorld().isClient||!isAlive())return;tickAnimations();
   if(getTarget()==null&&aggressor!=null&&getWorld() instanceof ServerWorld w){var e=w.getEntity(aggressor);if(e instanceof LivingEntity l)setTarget(l);else aggressor=null;}
@@ -105,5 +108,14 @@ public class President extends PathAwareEntity {
   nextBeer=age+(n.contains("BeerDelay")?Math.clamp(n.getInt("BeerDelay"),20,1800):600);
   restState=Math.clamp(n.getInt("RestState"),0,5);restIdleTicks=Math.max(0,n.getInt("RestIdleTicks"));
   if(restState>0){restState=3;cue("rest_sleep",Integer.MAX_VALUE);}else if(n.getInt("ClipTicks")>0)cue(n.getString("ActionClip"),Math.min(100,n.getInt("ClipTicks")));}
+ @Override public void onDeath(DamageSource source){
+  if(!getWorld().isClient)sound(lula()?"lula_taunt":"bolsonaro_death",1,1);
+  super.onDeath(source);
+ }
+ @Override protected void dropLoot(DamageSource source,boolean causedByPlayer){
+  super.dropLoot(source,causedByPlayer);
+  if(lula()){for(int i=0;i<5;i++)dropStack(new net.minecraft.item.ItemStack(net.minecraft.item.Items.COOKED_BEEF,64));}
+  else{dropStack(new net.minecraft.item.ItemStack(Terror.BAZOOKA));dropStack(new net.minecraft.item.ItemStack(Terror.MISSILE,64));}
+ }
  @Override public boolean cannotDespawn(){return true;}
 }

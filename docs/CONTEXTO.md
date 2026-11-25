@@ -87,3 +87,16 @@ Novo pedido: Bolsonaro derrotado deve dropar uma bazuca + um stack de 64 foguete
 ## Atuação de cerveja — 0.1.2
 
 Novo pedido implementado: Lula a pé e no jumento bebem cerveja ocasionalmente e passam por um balanço cômico curto. Variantes separadas `lula_cerveja` e `lula_jumento_cerveja`, clips `drink_beer` (4 s) e `tipsy_sway` (5 s); garrafa prop sem tampa. Som vanilla de beber, sem áudio externo. Primeira oportunidade de evento em 30–60 s e seguintes em 45–90 s, somente parado/no chão, fora de combate, sono ou outro gesto. Golpe interrompe. Navegação/velocidade, vida e inventário preservados; a garrafa ainda não é item craftável. Fonte e prévia detalhadas em `visual-assets/docs/LULA_CERVEJA.md` a partir da pasta do projeto. Conferência parcial no Blockbench da variante a pé e testes de servidor das duas formas; não foi aberto Minecraft cliente. Demais pendências da lista de feedback continuam pendentes.
+
+
+## Estado vigente — 0.2.0
+
+Esta seção substitui os estados antigos de pendência acima. Garrafa corrigida nas duas atuações do Lula: pega no gargalo, deslocamento para frente da palma e compensação de rotação. Bases preservadas. Amostragem geométrica em 121 instantes por variante; inspeção parcial da fonte a pé no Blockbench. Avaliação completa no Minecraft permanece com o usuário; caminhada/navegação preservadas.
+
+Incluídos: remoção do texto permanente das armas, barra amarela somente durante recarga, tecla N configurável para dia real do F3 sem limite em dez dias, barras de vida dos dois bosses em metades do topo, overlay/partículas de dano, drops de Lula (320 carnes cozidas) e Bolsonaro (bazuca vazia + 64 foguetes). Cerveja craftável/consumível e álcool como ingrediente: água+cana → álcool; álcool+trigo+açúcar → cerveja. O frasco volta ao consumir; não há efeitos no jogador. Previews de ambos os crafts em visual-assets/previews.
+
+Falas contextuais configuradas no pacote local opcional run/resourcepacks/presidencia-memes-local.zip: Lula picanha/cerveja ao iniciar balanço, Bolsonaro ninguém/telefone ao levar dano e pegaram/telefone ao morrer. Pacote precisa estar ativo; memes continuam fora do JAR público/Git por licença não verificada. Originais preservados e cortes rastreados em visual-assets/docs/voice-cuts-v020.json. Corte de morte provisório por pausas, sem audição semântica confirmada; aguardando confirmação do usuário. Efeitos licenciados e som vanilla de beber mantidos.
+
+Detalhes e limitações em mod/docs/V020.md. Build e 14 GameTests de servidor aprovados; isso não verifica HUD, som ou aparência no Minecraft. Próximo passo: avaliação manual do usuário e confirmação/ajuste do recorte de telefone. Não abrir cliente nem alterar caminhada antecipadamente. Para regenerar integração, executar export_v1.py e depois prepare_v020.py; o segundo restaura receitas/idiomas/eventos de 0.2.0.
+
+O usuário informou o início de “pegaram meu telefone” em 3 s. Corte atualizado para 3,00–4,57 s, aguardando sua audição do resultado.

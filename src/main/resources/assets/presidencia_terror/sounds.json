@@ -125,5 +125,14 @@
   },
   "bolsonaro_taunt": {
     "sounds": []
+  },
+  "lula_beer": {
+    "sounds": []
+  },
+  "bolsonaro_defend": {
+    "sounds": []
+  },
+  "bolsonaro_death": {
+    "sounds": []
   }
 }

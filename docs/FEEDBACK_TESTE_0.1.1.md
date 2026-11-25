@@ -23,3 +23,6 @@ Cerveja costuma usar água, malte (normalmente cevada), lúpulo e levedura; a fe
 ## Retorno positivo
 
 O usuário confirmou que Bolsonaro está se transformando corretamente. A avaliação das demais animações continua; não considerar a 0.1.1 aprovada integralmente.
+
+
+Atualização: itens desta lista implementados na 0.2.0; detalhes, limites e verificação em [V020.md](V020.md). Avaliação manual ainda pendente.
