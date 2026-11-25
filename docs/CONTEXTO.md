@@ -100,3 +100,8 @@ Falas contextuais configuradas no pacote local opcional run/resourcepacks/presid
 Detalhes e limitações em mod/docs/V020.md. Build e 14 GameTests de servidor aprovados; isso não verifica HUD, som ou aparência no Minecraft. Próximo passo: avaliação manual do usuário e confirmação/ajuste do recorte de telefone. Não abrir cliente nem alterar caminhada antecipadamente. Para regenerar integração, executar export_v1.py e depois prepare_v020.py; o segundo restaura receitas/idiomas/eventos de 0.2.0.
 
 O usuário informou o início de “pegaram meu telefone” em 3 s. Corte atualizado para 3,00–4,57 s, aguardando sua audição do resultado.
+
+
+## Planejamento 0.2.1 e áudio aprovado
+
+Usuário aprovou por audição o corte bolsonaro_death de 3,00 s até o fim; fonte cortada preservada localmente e catalogada com hash. Outros cortes continuam sem aprovação. Próximo patch 0.2.1 em coleta de pedidos, sem alteração de versão/código/texturas agora. Identidade fictícia BXE Enterprise (também mencionada BX Enterprise, grafia final pendente), com verde, pilha e galinha para cerveja, bazuca e revólver. Referências preservadas em visual-assets/references/bxe-enterprise. Ver [PLANEJAMENTO_0.2.1.md](PLANEJAMENTO_0.2.1.md).

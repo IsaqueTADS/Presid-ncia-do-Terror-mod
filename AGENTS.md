@@ -16,4 +16,6 @@
 - Ao interromper uma etapa, registre o que existe localmente, o que foi comitado/publicado e o que falta verificar. Confira Git e arquivos ao retomar; o resumo não substitui o estado real.
 - Preserve rascunhos e edições fora do escopo. Faça stage explícito apenas dos arquivos da tarefa concluída; não publique assets inacabados junto com uma atualização de documentação.
 
-- Versão vigente 0.2.0: ler docs/V020.md e a seção final de docs/CONTEXTO.md; feedback anterior integrado, recorte de voz de morte ainda provisório. Teste manual a cargo do usuário.
+- Versão vigente 0.2.0: ler docs/V020.md e a seção final de docs/CONTEXTO.md; feedback anterior integrado, recorte de voz de morte aprovado pelo usuário. Teste manual a cargo do usuário.
+
+- Próxima 0.2.1 em planejamento: ler docs/PLANEJAMENTO_0.2.1.md. Usuário pediu somente listar os novos pedidos por enquanto.
