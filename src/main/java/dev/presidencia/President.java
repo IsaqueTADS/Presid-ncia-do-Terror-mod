@@ -81,12 +81,13 @@ public class President extends PathAwareEntity {
  @Override public void onTrackedDataSet(TrackedData<?> key){super.onTrackedDataSet(key);if(key.equals(MOUNTED))calculateDimensions();}
  @Override public boolean damage(DamageSource source,float amount){boolean hurt=super.damage(source,amount);
   if(hurt&&!getWorld().isClient){((ServerWorld)getWorld()).spawnParticles(new net.minecraft.particle.DustParticleEffect(new org.joml.Vector3f(.65f,.08f,.06f),.8f),getX(),getY()+getHeight()*.65,getZ(),12,.35,.4,.35,.04);}
- if(hurt&&!getWorld().isClient&&isAlive()&&source.getAttacker() instanceof LivingEntity attacker&&attacker!=this){if(!mounted()){dataTracker.set(MOUNTED,true);shotCooldown=300;cue("transform_cue",20);sound("transform",.8f,1);Voices.play(this,lula()?"lula_react":"bolsonaro_defend",true);}if(resting())stopRest();else if(!actionClip().equals("transform_cue"))cue("mount_reaction",24);setTarget(attacker);aggressor=attacker.getUuid();lostSight=0;}return hurt;}
+ if(hurt&&!getWorld().isClient&&isAlive()&&source.getAttacker() instanceof LivingEntity attacker&&attacker!=this){if(!mounted()){dataTracker.set(MOUNTED,true);shotCooldown=300;cue("transform_cue",20);sound("transform",.8f,1);Voices.play(this,lula()?"lula_react":"bolsonaro_defend",true);}if(mounted()&&!actionClip().equals("transform_cue")&&voiceCooldown==0){Voices.play(this,lula()?"lula_react":"bolsonaro_taunt",false);voiceCooldown=160;}if(resting())stopRest();else if(!actionClip().equals("transform_cue"))cue("mount_reaction",24);setTarget(attacker);aggressor=attacker.getUuid();lostSight=0;}return hurt;}
  @Override public void tick(){
   super.tick();if(getWorld().isClient||!isAlive())return;tickAnimations();
   if(getTarget()==null&&aggressor!=null&&getWorld() instanceof ServerWorld w){var e=w.getEntity(aggressor);if(e instanceof LivingEntity l)setTarget(l);else aggressor=null;}
-  var target=getTarget();if(target==null){var owner=StalkerDirector.companion(this);if(owner!=null){if(!resting()&&clipTicks==0){getLookControl().lookAt(owner,30,30);if(squaredDistanceTo(owner)>10*10)getNavigation().startMovingTo(owner,.7);else getNavigation().stop();}Voices.ambient(this);}return;}
+  var target=getTarget();if(target==null){var owner=StalkerDirector.companion(this);if(owner!=null){if(!resting()&&clipTicks==0){getLookControl().lookAt(owner,30,30);if(squaredDistanceTo(owner)>10*10)getNavigation().startMovingTo(owner,.7);else getNavigation().stop();}}if(getWorld().getClosestPlayer(this,24)!=null)Voices.ambient(this);return;}
   if(resting()||actionClip().equals("transform_cue")){getNavigation().stop();if(shotCooldown>0)shotCooldown--;return;}
+  if(getWorld().getClosestPlayer(this,24)!=null)Voices.ambient(this);
   if(managed&&target.isAlive()&&target.getWorld()!=getWorld()){getNavigation().stop();return;}
   if(!target.isAlive()||target.isSpectator()||target.getWorld()!=getWorld()||(!managed&&(squaredDistanceTo(target)>80*80||(!canSee(target)&&++lostSight>200)))){setTarget(null);aggressor=null;getNavigation().stop();dataTracker.set(SHOT,-1);return;}
   if(canSee(target))lostSight=0;
@@ -117,7 +118,7 @@ public class President extends PathAwareEntity {
  }
  @Override protected void dropLoot(DamageSource source,boolean causedByPlayer){
   super.dropLoot(source,causedByPlayer);
-  if(lula()){for(int i=0;i<5;i++){var meat=new net.minecraft.item.ItemStack(net.minecraft.item.Items.COOKED_BEEF,64);meat.set(net.minecraft.component.DataComponentTypes.CUSTOM_NAME,net.minecraft.text.Text.literal("Picanha"));dropStack(meat);}dropStack(new net.minecraft.item.ItemStack(Terror.BEER,2+getRandom().nextInt(3)));}
+  if(lula()){for(int i=0;i<5;i++){var meat=new net.minecraft.item.ItemStack(net.minecraft.item.Items.COOKED_BEEF,64);meat.set(net.minecraft.component.DataComponentTypes.CUSTOM_NAME,net.minecraft.text.Text.literal("Picanha"));dropStack(meat);}for(int i=0;i<2;i++)dropStack(new net.minecraft.item.ItemStack(Terror.BEER,64));}
   else{dropStack(new net.minecraft.item.ItemStack(Terror.BAZOOKA));dropStack(new net.minecraft.item.ItemStack(Terror.MISSILE,64));}
  }
  @Override public boolean cannotDespawn(){return true;}

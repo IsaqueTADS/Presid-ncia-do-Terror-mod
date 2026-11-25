@@ -15,7 +15,7 @@ public class Terror implements ModInitializer {
  public static final EntityType<Rocket> ROCKET=Registry.register(Registries.ENTITY_TYPE,id("rocket"),EntityType.Builder.<Rocket>create(Rocket::new,SpawnGroup.MISC).dimensions(.3f,.3f).trackingTickInterval(1).maxTrackingRange(96).build(ID+":rocket"));
  public static final Item BEER=item("cerveja",new DrinkItem());
  public static final Item ALCOHOL=item("alcool",new Item(new Item.Settings().maxCount(16)));
- public static final net.minecraft.recipe.RecipeSerializer<AlcoholRecipe> ALCOHOL_RECIPE=Registry.register(Registries.RECIPE_SERIALIZER,id("alcool"),new net.minecraft.recipe.SpecialRecipeSerializer<>(AlcoholRecipe::new));
+ public static final net.minecraft.recipe.RecipeSerializer<AlcoholRecipe> ALCOHOL_RECIPE=Registry.register(Registries.RECIPE_SERIALIZER,id("alcool"),AlcoholRecipe.SERIALIZER);
  public static final Item BULLET=item("municao_revolver",new Item(new Item.Settings()));
  public static final Item MISSILE=item("foguete_bazuca",new Item(new Item.Settings()));
  public static final Gun REVOLVER=(Gun)item("revolver",new Gun(false));
@@ -24,10 +24,11 @@ public class Terror implements ModInitializer {
  public static final Item BOLSONARO_EGG=item("bolsonaro_spawn_egg",new SpawnEggItem(BOLSONARO,0x101920,0x16854c,new Item.Settings()));
  private static Item item(String name,Item item){return Registry.register(Registries.ITEM,id(name),item);}
  public void onInitialize(){
+  DirtArmor.initialize();
   TerrorSounds.initialize();
   net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents.END_SERVER_TICK.register(Gun::tickReloads);
   FabricDefaultAttributeRegistry.register(LULA,President.attributes());FabricDefaultAttributeRegistry.register(BOLSONARO,President.attributes());
-  Registry.register(Registries.ITEM_GROUP,id("items"),net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup.builder().displayName(net.minecraft.text.Text.literal("Presidência do Terror")).icon(()->new ItemStack(BEER)).entries((ctx,e)->{for(var item:new Item[]{REVOLVER,BAZOOKA,BULLET,MISSILE,BEER,ALCOHOL,LULA_EGG,BOLSONARO_EGG})e.add(item);}).build());
+  Registry.register(Registries.ITEM_GROUP,id("items"),net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup.builder().displayName(net.minecraft.text.Text.literal("Presidência do Terror")).icon(()->new ItemStack(BEER)).entries((ctx,e)->{for(var item:new Item[]{REVOLVER,BAZOOKA,BULLET,MISSILE,BEER,ALCOHOL,LULA_EGG,BOLSONARO_EGG,DirtArmor.HELMET,DirtArmor.CHEST,DirtArmor.LEGS,DirtArmor.BOOTS})e.add(item);}).build());
   StalkerDirector.initialize();
   net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents.END_SERVER_TICK.register(DamageNumbers::tick);
   PayloadTypeRegistry.playC2S().register(ReloadPacket.ID,ReloadPacket.CODEC);

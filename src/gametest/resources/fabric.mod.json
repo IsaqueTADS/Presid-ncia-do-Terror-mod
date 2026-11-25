@@ -6,7 +6,8 @@
   "entrypoints": {
     "fabric-gametest": [
       "dev.presidencia.TerrorTests",
-      "dev.presidencia.V03Tests"
+      "dev.presidencia.V03Tests",
+      "dev.presidencia.V031Tests"
     ]
   },
   "depends": {

@@ -1,0 +1,29 @@
+{
+  "source_revision": "3c56d87aa1fe639442251e7338468b87d2dda594",
+  "files": [
+    {
+      "source": "textures/armor/terra/botas_terra.png",
+      "sha256": "0cd152a68c4d07d26a7562ff8dea915337bad02fb640d60dc822038b9b5c2843"
+    },
+    {
+      "source": "textures/armor/terra/calcas_terra.png",
+      "sha256": "0e43f5b315fd39b36a8a1a39d687464ddb254517bbee69fbb78ae51ba126316d"
+    },
+    {
+      "source": "textures/armor/terra/capacete_terra.png",
+      "sha256": "8e23bbcf22f50ebd132b11946b78f59dc9807fc59c67bb3c3d24070fb13098b9"
+    },
+    {
+      "source": "textures/armor/terra/peitoral_terra.png",
+      "sha256": "16d339e34cabc3787df12e77ef726348ce68027121c63864a6d4b4a9515b6a41"
+    },
+    {
+      "source": "textures/armor/terra/terra_layer_1.png",
+      "sha256": "e6b83a336717f242011e116a0dbf8e524e160e377f146b9ee3876056196bac0a"
+    },
+    {
+      "source": "textures/armor/terra/terra_layer_2.png",
+      "sha256": "3d51941a35f633d4ac5ebbee506676f2535091dbd2c55bbc1d48f45fa5c6e357"
+    }
+  ]
+}

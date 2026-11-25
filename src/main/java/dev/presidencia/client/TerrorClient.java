@@ -22,6 +22,10 @@ public class TerrorClient implements ClientModInitializer {
  private float recoilRemaining;
  public void onInitializeClient(){
   TerrorHud.initialize();
+  net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents.CLIENT_STARTED.register(client->{
+   var packs=client.getResourcePackManager();packs.scanPacks();String id="file/presidencia-memes-local.zip";
+   if(packs.getProfiles().stream().anyMatch(profile->profile.getId().equals(id))&&!packs.getEnabledIds().contains(id)){var enabled=new java.util.ArrayList<>(packs.getEnabledIds());enabled.add(id);packs.setEnabledProfiles(enabled);if(!client.options.resourcePacks.contains(id))client.options.resourcePacks.add(id);client.options.write();client.reloadResources();}
+  });
   var key=KeyBindingHelper.registerKeyBinding(new KeyBinding("key.presidencia_terror.reload",InputUtil.Type.KEYSYM,GLFW.GLFW_KEY_R,"category.presidencia_terror"));
   ClientTickEvents.END_CLIENT_TICK.register(client->{
    while(key.wasPressed())if(client.player!=null&&client.currentScreen==null&&client.player.getMainHandStack().getItem() instanceof Gun&&ClientPlayNetworking.canSend(ReloadPacket.ID))ClientPlayNetworking.send(new ReloadPacket());

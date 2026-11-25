@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "dev.presidencia.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "FallDamageMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

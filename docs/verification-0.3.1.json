@@ -1,0 +1,8 @@
+{
+  "version": "0.3.1",
+  "build": "passed",
+  "tests_passed": 25,
+  "failures": 0,
+  "jar_sha256": "03f82326b95ab7aef90eef6ff1eea48060cf47bf72080947fc65ecd5f40f1604",
+  "client_test": "Not run; armor appearance, sound pack auto-enable and nausea need manual review"
+}

@@ -23,3 +23,5 @@
 - Histórico 0.2.2: rótulos revisados aprovados pelo usuário; veja docs/CONTEXTO.md.
 
 - Versão vigente 0.3.0: ler docs/V030.md e a seção final de contexto. Não confundir planejamento antigo com estado implementado. Manter teste cliente manual pelo usuário.
+
+- Versão vigente 0.3.1: ler docs/V031.md. Armadura de terra usa renderer/UV vanilla; não regenerar os modelos dos bosses.

@@ -1,4 +1,16 @@
 {
   "type": "presidencia_terror:alcool",
-  "category": "misc"
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:potion"
+    },
+    {
+      "item": "minecraft:sugar_cane"
+    }
+  ],
+  "result": {
+    "id": "presidencia_terror:alcool",
+    "count": 1
+  }
 }

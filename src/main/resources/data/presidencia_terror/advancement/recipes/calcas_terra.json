@@ -1,0 +1,24 @@
+{
+  "criteria": {
+    "dirt": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:dirt"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "dirt"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "presidencia_terror:calcas_terra"
+    ]
+  }
+}

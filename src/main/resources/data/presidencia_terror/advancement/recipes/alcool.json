@@ -1,0 +1,25 @@
+{
+  "criteria": {
+    "cane": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:sugar_cane"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cane"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "presidencia_terror:alcool",
+      "presidencia_terror:cerveja"
+    ]
+  }
+}

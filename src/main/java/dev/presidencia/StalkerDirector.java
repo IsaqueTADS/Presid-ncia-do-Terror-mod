@@ -38,7 +38,7 @@ public final class StalkerDirector {
    var target=p!=null&&p.getTarget() instanceof ServerPlayerEntity t&&t.isAlive()?t:n.containsUuid("Followed")?s.getPlayerManager().getPlayer(n.getUuid("Followed")):null;
    if(target==null||!target.isAlive()||target.isSpectator()||!candidates.contains(target)){if(p!=null&&!p.isRemoved())p.clearAggression();target=candidates.getFirst();}n.putUuid("Followed",target.getUuid());
    if(p!=null&&!p.isRemoved()){p.followed=target.getUuid();if(p.getWorld()==target.getWorld()&&p.squaredDistanceTo(target)<=48*48){state.markDirty();continue;}}
-   boolean first=!n.contains("Snapshot");if(first&&!TerrorConfig.get().autoSpawn)continue;
+   boolean first=!n.contains("Snapshot");if(first&&(!TerrorConfig.get().autoSpawn||s.getOverworld().getTimeOfDay()<24000))continue;
    if(!first&&(!TerrorConfig.get().teleport||now<n.getLong("NextRecovery")))continue;
    if(p==null||p.isRemoved()){
     var next=(lula?Terror.LULA:Terror.BOLSONARO).create(target.getServerWorld());if(next==null)continue;if(!first)next.readNbt(n.getCompound("Snapshot"));

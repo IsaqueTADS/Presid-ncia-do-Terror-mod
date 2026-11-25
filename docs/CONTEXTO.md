@@ -151,3 +151,8 @@ Usuário aceitou as propostas anteriores de perseguição/descanso/multiplayer/f
 ## Implementação 0.3.0
 
 Usuário autorizou executar a próxima versão. Confirmou bônus após tambor completo, acompanhamento entre dimensões e último HS genérico 25,5 (22 no Lula). Implementados aba criativa, dupla automática persistente, acompanhamento/teleporte, vitória/reset, descanso próximo, memes contextuais, Picanha e cerveja, dano/tooltip e números de dano. Fontes/modelos e áudios locais preservados; não regenerados. Documento vigente: [V030.md](V030.md). Planejamento anterior é histórico; sem bônus de distância, pois não houve valor definido. Cliente Minecraft não aberto, avaliação audiovisual/multiplayer final a cargo do usuário.
+
+
+## Atualização 0.3.1
+
+Implementados pedidos de craft do álcool visível, náusea 30 s da cerveja, 128 cervejas no drop do Lula, armadura de terra superior à netherite com metade do dano de queda no conjunto completo, e spawn inicial apenas a partir do dia 1 do F3. HS/corpo já estavam distintos e foram preservados. Áudio revisto após relato de silêncio: intervalo 12–25 s, vozes também em ovos/combate e ativação automática do pack local se instalado. Sem novos áudios públicos. Documento vigente: [V031.md](V031.md). Fontes visuais de armadura por reskin vanilla; prévia/crafts versionados. Não aberto cliente Minecraft.

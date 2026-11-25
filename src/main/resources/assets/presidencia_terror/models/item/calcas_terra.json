@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "presidencia_terror:item/calcas_terra"
+  }
+}
