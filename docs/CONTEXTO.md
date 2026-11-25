@@ -136,3 +136,8 @@ Usuário autorizou atualizar o mod com os rótulos e selos revisados. Cerveja: C
 Pedido confirmado, apenas registrado por enquanto: criar uma aba própria “Presidência do Terror” no inventário criativo, identificada por um ícone do mod. Ao clicar, reunir os itens do projeto: revólver, bazuca, munição do revólver, foguetes, cerveja, álcool e os dois ovos de invocação. Organizar os itens separadamente dos itens vanilla; na implementação revisar os registros atuais nas abas vanilla para evitar duplicação desnecessária. Arte exata do ícone ainda não definida; não confundir com mudança no inventário de sobrevivência.
 
 Não implementado nesta etapa. Versão e JAR permanecem 0.2.2; incluir no planejamento da próxima versão, sem número novo definido neste pedido.
+
+
+## Planejamento 0.3
+
+Novos pedidos registrados, sem implementar: spawn inicial automático da dupla, acompanhamento/observação, memes contextuais, transformação ao ataque, teleporte de recuperação a cada 30 s inclusive com chunk descarregada e após respawn, descanso perto do jogador; cerveja no loot do Lula e carne nomeada Picanha. Aba criativa anterior incluída. Multiplayer, dimensões, respawn definitivo dos bosses e quantidades ainda requerem decisões. Lista completa, dano vigente e propostas não aprovadas em [PLANEJAMENTO_0.3.md](PLANEJAMENTO_0.3.md). Versão/JAR continuam 0.2.2. Usuário relatou boa jogabilidade e uso das animações no teste manual.
