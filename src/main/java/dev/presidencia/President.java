@@ -10,36 +10,80 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import net.minecraft.sound.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.block.BlockState;
 import java.util.UUID;
 
 public class President extends PathAwareEntity {
  private static final TrackedData<Boolean> MOUNTED=DataTracker.registerData(President.class,TrackedDataHandlerRegistry.BOOLEAN);
  private static final TrackedData<Integer> SHOT=DataTracker.registerData(President.class,TrackedDataHandlerRegistry.INTEGER);
- private int shotCooldown=300,meleeCooldown,lostSight;
+ private static final TrackedData<String> CLIP=DataTracker.registerData(President.class,TrackedDataHandlerRegistry.STRING);
+ private static final TrackedData<Long> CLIP_START=DataTracker.registerData(President.class,TrackedDataHandlerRegistry.LONG);
+ private int shotCooldown=300,meleeCooldown,lostSight,clipTicks,restState,restIdleTicks,moodIndex,nextMood=160,nextCombatVoice=180;
+ public String actionClip(){return dataTracker.get(CLIP);}
+ public float actionTime(float delta){return (getWorld().getTime()-dataTracker.get(CLIP_START)+delta)/20f;}
+ public int restState(){return restState;}
+ public boolean resting(){return restState>0;}
+ public boolean visualMounted(){return mounted()&&!actionClip().equals("transform_cue");}
+ private void cue(String clip,int ticks){dataTracker.set(CLIP,clip);dataTracker.set(CLIP_START,getWorld().getTime());clipTicks=ticks;}
+ private void sound(String name,float volume,float pitch){getWorld().playSound(null,getX(),getY()+1,getZ(),TerrorSounds.get(name),SoundCategory.HOSTILE,volume,pitch);}
+ private void stopRest(){if(restState<4){restState=lula()?5:4;cue(lula()?"stand_up":"wake_up",lula()?50:30);sound("swish",.5f,1);}}
+ private void tickAnimations(){
+  if(clipTicks>0&&--clipTicks==0){
+   String previous=actionClip();
+   if(previous.equals("transform_cue")){cue("mount_reaction",24);return;}
+   if(restState==1){restState=lula()?3:2;cue(lula()?"rest_sleep":"settle_sleep",lula()?Integer.MAX_VALUE:30);return;}
+   if(restState==2){restState=3;cue("rest_sleep",Integer.MAX_VALUE);return;}
+   if(restState==4){restState=5;cue("stand_up",50);return;}
+   if(restState==5){restState=0;restIdleTicks=0;nextMood=age+160;}
+   dataTracker.set(CLIP,"");
+  }
+  boolean moving=getVelocity().horizontalLengthSquared()>.0003;
+  restIdleTicks=moving||getTarget()!=null?0:restIdleTicks+1;
+  if(resting()){
+   getNavigation().stop();
+   if(restState<=3){var nearby=getWorld().getClosestPlayer(this,10);if(getTarget()!=null){stopRest();}else if(nearby!=null&&!nearby.isSpectator()){setTarget(nearby);aggressor=nearby.getUuid();stopRest();}}
+   return;
+  }
+  if(mounted()&&isOnGround()&&restIdleTicks>=200&&getTarget()==null&&getWorld().getClosestPlayer(this,12)==null){restState=1;cue("lie_down",50);getNavigation().stop();return;}
+  if(getTarget()==null&&!moving&&clipTicks==0&&age>=nextMood){
+   nextMood=age+180;
+   String[] clips=mounted()?new String[]{"idle","look_around","mount_look_around","mouth_chatter",lula()?"bray":"roar","mount_reaction"}:new String[]{"look_around","startle",lula()?"steal_food":"protect_phone","idle"};
+   String clip=clips[moodIndex++%clips.length];cue(clip,clip.equals("bray")||clip.equals("roar")?60:40);
+   if(clip.equals("bray")||clip.equals("roar"))sound(lula()?"donkey_voice":"trex_voice",.8f,1);
+   if(clip.equals("mouth_chatter"))sound(lula()?"lula_taunt":"bolsonaro_taunt",.8f,1);
+   if(clip.equals("steal_food"))sound("lula_food",.8f,1);
+   if(clip.equals("protect_phone"))sound("bolsonaro_phone",.8f,1);
+  }
+ }
+ @Override protected void playStepSound(BlockPos pos,BlockState state){sound(mounted()?(lula()?"donkey_step":"trex_step"):"human_step",mounted()?.55f:.3f,1);}
+ @Override protected SoundEvent getHurtSound(DamageSource source){return TerrorSounds.get("creature_hurt");}
  private UUID aggressor;
  public President(EntityType<? extends President> type,World world){super(type,world);setPersistent();}
  public boolean lula(){return getType()==Terror.LULA;}
  public boolean mounted(){return dataTracker.get(MOUNTED);}
  public int shotIn(){return dataTracker.get(SHOT);}
- public static DefaultAttributeContainer.Builder attributes(){return createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH,80).add(EntityAttributes.GENERIC_MOVEMENT_SPEED,.27).add(EntityAttributes.GENERIC_ATTACK_DAMAGE,6).add(EntityAttributes.GENERIC_FOLLOW_RANGE,64).add(EntityAttributes.GENERIC_STEP_HEIGHT,1);}
- @Override protected void initGoals(){goalSelector.add(0,new SwimGoal(this));goalSelector.add(6,new WanderAroundFarGoal(this,.7));goalSelector.add(7,new LookAroundGoal(this));}
- @Override protected void initDataTracker(DataTracker.Builder b){super.initDataTracker(b);b.add(MOUNTED,false);b.add(SHOT,-1);}
+ public static DefaultAttributeContainer.Builder attributes(){return createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH,500).add(EntityAttributes.GENERIC_MOVEMENT_SPEED,.27).add(EntityAttributes.GENERIC_ATTACK_DAMAGE,6).add(EntityAttributes.GENERIC_FOLLOW_RANGE,64).add(EntityAttributes.GENERIC_STEP_HEIGHT,1);}
+ @Override protected void initGoals(){goalSelector.add(0,new SwimGoal(this));goalSelector.add(6,new WanderAroundFarGoal(this,.7){@Override public boolean canStart(){return !resting()&&clipTicks==0&&super.canStart();}@Override public boolean shouldContinue(){return !resting()&&clipTicks==0&&super.shouldContinue();}});goalSelector.add(7,new LookAroundGoal(this));}
+ @Override protected void initDataTracker(DataTracker.Builder b){super.initDataTracker(b);b.add(MOUNTED,false);b.add(SHOT,-1);b.add(CLIP,"");b.add(CLIP_START,0L);}
  @Override public EntityDimensions getBaseDimensions(EntityPose pose){return mounted()?EntityDimensions.changing(1.8f,lula()?4.8f:5.4f):super.getBaseDimensions(pose);}
  @Override public void onTrackedDataSet(TrackedData<?> key){super.onTrackedDataSet(key);if(key.equals(MOUNTED))calculateDimensions();}
- @Override public boolean damage(DamageSource source,float amount){boolean hurt=super.damage(source,amount);if(hurt&&!getWorld().isClient&&isAlive()&&source.getAttacker() instanceof LivingEntity attacker&&attacker!=this){if(!mounted()){dataTracker.set(MOUNTED,true);shotCooldown=300;getWorld().playSound(null,getBlockPos(),SoundEvents.ENTITY_RAVAGER_ROAR,SoundCategory.HOSTILE,.7f,lula()?1.4f:.7f);}setTarget(attacker);aggressor=attacker.getUuid();lostSight=0;}return hurt;}
+ @Override public boolean damage(DamageSource source,float amount){boolean hurt=super.damage(source,amount);if(hurt&&!getWorld().isClient&&isAlive()&&source.getAttacker() instanceof LivingEntity attacker&&attacker!=this){if(!mounted()){dataTracker.set(MOUNTED,true);shotCooldown=300;cue("transform_cue",20);sound("transform",.8f,1);sound(lula()?"lula_react":"bolsonaro_laugh",.8f,1);}if(resting())stopRest();else if(!actionClip().equals("transform_cue"))cue("mount_reaction",24);setTarget(attacker);aggressor=attacker.getUuid();lostSight=0;}return hurt;}
  @Override public void tick(){
-  super.tick();if(getWorld().isClient||!isAlive())return;
+  super.tick();if(getWorld().isClient||!isAlive())return;tickAnimations();
   if(getTarget()==null&&aggressor!=null&&getWorld() instanceof ServerWorld w){var e=w.getEntity(aggressor);if(e instanceof LivingEntity l)setTarget(l);else aggressor=null;}
   var target=getTarget();if(target==null)return;
+  if(resting()||actionClip().equals("transform_cue")){getNavigation().stop();if(shotCooldown>0)shotCooldown--;return;}
   if(!target.isAlive()||target.isSpectator()||target.getWorld()!=getWorld()||squaredDistanceTo(target)>80*80||(!canSee(target)&&++lostSight>200)){setTarget(null);aggressor=null;getNavigation().stop();dataTracker.set(SHOT,-1);return;}
   if(canSee(target))lostSight=0;
+  if(mounted()&&age>=nextCombatVoice&&clipTicks==0){nextCombatVoice=age+240;boolean vocal=(moodIndex++%2)==0;cue(vocal?(lula()?"bray":"roar"):"mouth_chatter",vocal?60:40);sound(vocal?(lula()?"donkey_voice":"trex_voice"):(lula()?"lula_taunt":"bolsonaro_taunt"),.8f,1);}
   getLookControl().lookAt(target,30,30);getNavigation().startMovingTo(target,1.2);getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).setBaseValue(mounted()?.32:.27);
   if(meleeCooldown>0)meleeCooldown--;
   if(mounted()&&squaredDistanceTo(target)<9&&meleeCooldown==0&&canSee(target)){tryAttack(target);meleeCooldown=30;}
   if(mounted()&&!lula()){
    if(shotCooldown>0)shotCooldown--;
    dataTracker.set(SHOT,shotCooldown<=40?shotCooldown:shotCooldown>260?-(300-shotCooldown)-2:-1);
-   if(shotCooldown==40)getWorld().playSound(null,getBlockPos(),SoundEvents.BLOCK_NOTE_BLOCK_PLING.value(),SoundCategory.HOSTILE,1,.6f);
+   if(shotCooldown==40){getWorld().playSound(null,getBlockPos(),SoundEvents.BLOCK_NOTE_BLOCK_PLING.value(),SoundCategory.HOSTILE,1,.6f);sound("swish",.6f,1);}
    if(shotCooldown==0&&canSee(target)){
     var direction=target.getEyePos().subtract(getEyePos()).normalize();
     Rocket.launch((ServerWorld)getWorld(),this,getEyePos(),direction);shotCooldown=300;
@@ -47,7 +91,10 @@ public class President extends PathAwareEntity {
    }
   }
  }
- @Override public void writeCustomDataToNbt(NbtCompound n){super.writeCustomDataToNbt(n);n.putBoolean("Mounted",mounted());n.putInt("ShotCooldown",shotCooldown);if(aggressor!=null)n.putUuid("Aggressor",aggressor);}
- @Override public void readCustomDataFromNbt(NbtCompound n){super.readCustomDataFromNbt(n);dataTracker.set(MOUNTED,n.getBoolean("Mounted"));shotCooldown=Math.max(0,Math.min(300,n.getInt("ShotCooldown")));aggressor=n.containsUuid("Aggressor")?n.getUuid("Aggressor"):null;}
+ @Override public void writeCustomDataToNbt(NbtCompound n){super.writeCustomDataToNbt(n);n.putBoolean("Mounted",mounted());n.putInt("RestState",restState);n.putInt("RestIdleTicks",restIdleTicks);n.putString("ActionClip",actionClip());n.putInt("ClipTicks",clipTicks);n.putInt("ShotCooldown",shotCooldown);if(aggressor!=null)n.putUuid("Aggressor",aggressor);}
+ @Override public void readCustomDataFromNbt(NbtCompound n){super.readCustomDataFromNbt(n);dataTracker.set(MOUNTED,n.getBoolean("Mounted"));shotCooldown=Math.max(0,Math.min(300,n.getInt("ShotCooldown")));aggressor=n.containsUuid("Aggressor")?n.getUuid("Aggressor"):null;
+  float oldMax=getMaxHealth(),oldHealth=getHealth();getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(500);if(oldMax<500)setHealth(Math.min(500,oldHealth+500-oldMax));
+  restState=Math.clamp(n.getInt("RestState"),0,5);restIdleTicks=Math.max(0,n.getInt("RestIdleTicks"));
+  if(restState>0){restState=3;cue("rest_sleep",Integer.MAX_VALUE);}else if(n.getInt("ClipTicks")>0)cue(n.getString("ActionClip"),Math.min(60,n.getInt("ClipTicks")));}
  @Override public boolean cannotDespawn(){return true;}
 }

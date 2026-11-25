@@ -2,6 +2,7 @@ package dev.presidencia.client;
 
 import com.google.gson.*;
 import dev.presidencia.Terror;
+import dev.presidencia.BazookaPose;
 import java.util.*;
 import java.io.*;
 import net.minecraft.client.MinecraftClient;
@@ -57,14 +58,27 @@ public final class BlockbenchModel {
   var mat=parents.containsKey(id)?new Matrix4f(bone(parents.get(id),tracks,memo)):new Matrix4f();
   mat.mul(transform(vec(b,"origin"),vec(b,"rotation").add(tr.getOrDefault("rotation",new Vector3f())),tr.getOrDefault("position",new Vector3f()),tr.getOrDefault("scale",new Vector3f(1))));memo.put(id,mat);return mat;
  }
+ private Map<String,Map<String,Vector3f>> layeredTracks(String clip,float time,String baseClip,float baseTime){
+  var pose=baseClip==null?tracks(clip,time):tracks(baseClip,baseTime);
+  if(baseClip!=null)for(var entry:tracks(clip,time).entrySet())pose.computeIfAbsent(entry.getKey(),k->new HashMap<>()).putAll(entry.getValue());
+  return pose;
+ }
+ public Matrix4f attachment(String boneName,String clip,float time,String baseClip,float baseTime){
+  for(var entry:bones.entrySet())if(entry.getValue().get("name").getAsString().equals(boneName))return new Matrix4f(bone(entry.getKey(),layeredTracks(clip,time,baseClip,baseTime),new HashMap<>()));
+  return new Matrix4f();
+ }
  public void draw(MatrixStack matrices,VertexConsumerProvider buffers,int light,int overlay,String clip,float time,int rounds){
   draw(matrices,buffers,light,overlay,clip,time,rounds,-1);
  }
  public void draw(MatrixStack matrices,VertexConsumerProvider buffers,int light,int overlay,String clip,float time,int rounds,float armRaise){
-  var tracks=tracks(clip,time);var memo=new HashMap<String,Matrix4f>();
+  draw(matrices,buffers,light,overlay,clip,time,rounds,armRaise,null,0);
+ }
+ public void draw(MatrixStack matrices,VertexConsumerProvider buffers,int light,int overlay,String clip,float time,int rounds,float armRaise,String baseClip,float baseTime){
+  var tracks=layeredTracks(clip,time,baseClip,baseTime);
+  var memo=new HashMap<String,Matrix4f>();
   if(armRaise>=0)for(var b:bones.entrySet()){
    String n=b.getValue().get("name").getAsString();
-   if(n.equals("arm_right")||n.equals("arm_left"))tracks.computeIfAbsent(b.getKey(),k->new HashMap<>()).put("rotation",n.equals("arm_right")?new Vector3f(-240*armRaise,0,-7*armRaise):new Vector3f(-25*armRaise,0,15*armRaise));
+   if(n.equals("arm_right")||n.equals("arm_left"))tracks.computeIfAbsent(b.getKey(),k->new HashMap<>()).put("rotation",n.equals("arm_right")?new Vector3f(BazookaPose.armAngle(armRaise),0,0):new Vector3f(-25*armRaise,0,15*armRaise));
   }
   for(var element:source.getAsJsonArray("elements")){
    var e=element.getAsJsonObject();String name=e.get("name").getAsString();var transform=new Matrix4f(bone(owners.get(e.get("uuid").getAsString()),tracks,memo)).mul(transform(vec(e,"origin"),vec(e,"rotation"),new Vector3f(),new Vector3f(1)));

@@ -1,0 +1,78 @@
+{
+  "lula": {
+    "clips": [
+      "idle",
+      "look_around",
+      "walk",
+      "run",
+      "startle",
+      "steal_food",
+      "transform_cue"
+    ],
+    "coverage": "Context routes present in runtime source; manual playback review pending."
+  },
+  "bolsonaro": {
+    "clips": [
+      "idle",
+      "look_around",
+      "walk",
+      "run",
+      "startle",
+      "protect_phone",
+      "transform_cue"
+    ],
+    "coverage": "Context routes present in runtime source; manual playback review pending."
+  },
+  "lula_jumento": {
+    "clips": [
+      "idle",
+      "look_around",
+      "mount_idle",
+      "mounted_walk",
+      "mounted_run",
+      "mouth_chatter",
+      "bray",
+      "mount_look_around",
+      "mount_reaction",
+      "lie_down",
+      "stand_up",
+      "rest_sleep"
+    ],
+    "coverage": "Context routes present in runtime source; manual playback review pending."
+  },
+  "bolsonaro_trex": {
+    "clips": [
+      "idle",
+      "look_around",
+      "mount_idle",
+      "mounted_walk",
+      "mounted_run",
+      "mouth_chatter",
+      "roar",
+      "mount_look_around",
+      "mount_reaction",
+      "lie_down",
+      "stand_up",
+      "settle_sleep",
+      "wake_up",
+      "rest_sleep"
+    ],
+    "coverage": "Context routes present in runtime source; manual playback review pending."
+  },
+  "revolver": {
+    "clips": [
+      "idle",
+      "fire",
+      "reload"
+    ],
+    "coverage": "Context routes present in runtime source; manual playback review pending."
+  },
+  "bazuca": {
+    "clips": [
+      "idle",
+      "fire",
+      "reload"
+    ],
+    "coverage": "Context routes present in runtime source; manual playback review pending."
+  }
+}

@@ -23,6 +23,7 @@ public class Terror implements ModInitializer {
  public static final Item BOLSONARO_EGG=item("bolsonaro_spawn_egg",new SpawnEggItem(BOLSONARO,0x101920,0x16854c,new Item.Settings()));
  private static Item item(String name,Item item){return Registry.register(Registries.ITEM,id(name),item);}
  public void onInitialize(){
+  TerrorSounds.initialize();
   net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents.END_SERVER_TICK.register(Gun::tickReloads);
   FabricDefaultAttributeRegistry.register(LULA,President.attributes());FabricDefaultAttributeRegistry.register(BOLSONARO,President.attributes());
   ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(e->{e.add(REVOLVER);e.add(BAZOOKA);e.add(BULLET);e.add(MISSILE);});

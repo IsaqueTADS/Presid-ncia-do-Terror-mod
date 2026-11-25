@@ -1,0 +1,129 @@
+{
+  "human_step": {
+    "sounds": [
+      {
+        "name": "presidencia_terror:runtime/human_step_0"
+      },
+      {
+        "name": "presidencia_terror:runtime/human_step_1"
+      },
+      {
+        "name": "presidencia_terror:runtime/human_step_2"
+      },
+      {
+        "name": "presidencia_terror:runtime/human_step_3"
+      },
+      {
+        "name": "presidencia_terror:runtime/human_step_4"
+      },
+      {
+        "name": "presidencia_terror:runtime/human_step_5"
+      }
+    ]
+  },
+  "trex_step": {
+    "sounds": [
+      {
+        "name": "presidencia_terror:runtime/trex_step_0"
+      },
+      {
+        "name": "presidencia_terror:runtime/trex_step_1"
+      },
+      {
+        "name": "presidencia_terror:runtime/trex_step_2"
+      }
+    ]
+  },
+  "donkey_step": {
+    "sounds": [
+      {
+        "name": "presidencia_terror:runtime/donkey_step_0"
+      },
+      {
+        "name": "presidencia_terror:runtime/donkey_step_1"
+      }
+    ]
+  },
+  "donkey_voice": {
+    "sounds": [
+      {
+        "name": "presidencia_terror:runtime/donkey_voice_0"
+      }
+    ]
+  },
+  "trex_voice": {
+    "sounds": [
+      {
+        "name": "presidencia_terror:runtime/trex_voice_0"
+      },
+      {
+        "name": "presidencia_terror:runtime/trex_voice_1"
+      }
+    ]
+  },
+  "creature_hurt": {
+    "sounds": [
+      {
+        "name": "presidencia_terror:runtime/creature_hurt_0"
+      },
+      {
+        "name": "presidencia_terror:runtime/creature_hurt_1"
+      }
+    ]
+  },
+  "transform": {
+    "sounds": [
+      {
+        "name": "presidencia_terror:runtime/transform_0"
+      },
+      {
+        "name": "presidencia_terror:runtime/transform_1"
+      }
+    ]
+  },
+  "swish": {
+    "sounds": [
+      {
+        "name": "presidencia_terror:runtime/swish_0"
+      },
+      {
+        "name": "presidencia_terror:runtime/swish_1"
+      }
+    ]
+  },
+  "impact": {
+    "sounds": [
+      {
+        "name": "presidencia_terror:runtime/impact_0"
+      },
+      {
+        "name": "presidencia_terror:runtime/impact_1"
+      }
+    ]
+  },
+  "reload": {
+    "sounds": [
+      {
+        "name": "presidencia_terror:runtime/reload_0"
+      }
+    ]
+  },
+  "lula_food": {
+    "sounds": []
+  },
+  "lula_taunt": {
+    "sounds": []
+  },
+  "lula_react": {
+    "sounds": []
+  },
+  "bolsonaro_phone": {
+    "sounds": []
+  },
+  "bolsonaro_laugh": {
+    "sounds": []
+  },
+  "bolsonaro_taunt": {
+    "sounds": []
+  }
+}

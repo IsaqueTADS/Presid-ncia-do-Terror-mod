@@ -56,7 +56,11 @@ public class Gun extends Item {
    Vec3d start=p.getEyePos(),end=start.add(p.getRotationVec(1).multiply(64));
    var wall=w.raycast(new RaycastContext(start,end,RaycastContext.ShapeType.COLLIDER,RaycastContext.FluidHandling.NONE,p));end=wall.getPos();
    var hit=ProjectileUtilBridge.hit(p,start,end);
-   if(hit!=null)hit.getEntity().damage(w.getDamageSources().playerAttack(p),6);
+   if(hit!=null){hit.getEntity().damage(w.getDamageSources().playerAttack(p),6);end=hit.getPos();}
+   Vec3d segment=end.subtract(start);int marks=Math.max(1,(int)(segment.length()*5));
+   for(int i=1;i<=marks;i++){Vec3d at=start.add(segment.multiply((double)i/marks));((ServerWorld)w).spawnParticles(new net.minecraft.particle.DustParticleEffect(new org.joml.Vector3f(1f,.8f,.25f),.55f),at.x,at.y,at.z,1,0,0,0,0);}
+   ((ServerWorld)w).spawnParticles(net.minecraft.particle.ParticleTypes.CRIT,end.x,end.y,end.z,5,.07,.07,.07,.03);
+   if(hit!=null||wall.getType()!=HitResult.Type.MISS)w.playSound(null,end.x,end.y,end.z,TerrorSounds.get("impact"),SoundCategory.PLAYERS,.5f,1.4f);
    ((ServerWorld)w).spawnParticles(net.minecraft.particle.ParticleTypes.CRIT,start.x,start.y,start.z,8,.1,.1,.1,.2);
   }
   w.playSound(null,p.getBlockPos(),bazooka?SoundEvents.ENTITY_FIREWORK_ROCKET_LAUNCH:SoundEvents.ENTITY_GENERIC_EXPLODE.value(),SoundCategory.PLAYERS,bazooka?1f:.5f,bazooka?.8f:1.8f);

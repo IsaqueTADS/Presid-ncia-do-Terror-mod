@@ -9,14 +9,39 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.*;
 import net.minecraft.world.GameMode;
 public class TerrorTests implements FabricGameTest {
+ @GameTest(templateName=EMPTY_STRUCTURE,tickLimit=110)
+ public void sleepingMountWakesBeforeChasing(TestContext c){
+  var e=Terror.BOLSONARO.create(c.getWorld());e.setAiDisabled(true);e.setNoGravity(true);e.setPosition(Vec3d.ofBottomCenter(c.getAbsolutePos(new BlockPos(2,1,2))));
+  var n=new NbtCompound();e.writeCustomDataToNbt(n);n.putBoolean("Mounted",true);n.putInt("RestState",3);e.readCustomDataFromNbt(n);c.getWorld().spawnEntity(e);
+  c.assertEquals(e.actionClip(),"rest_sleep","Saved sleeping mount uses sleeping animation");
+  var player=c.createMockPlayer(GameMode.SURVIVAL);player.setPosition(e.getPos().add(4,0,0));e.setTarget(player);
+  c.runAtTick(3,()->c.assertEquals(e.actionClip(),"wake_up","Waking transition before pursuit"));
+  c.runAtTick(36,()->c.assertEquals(e.actionClip(),"stand_up","Standing transition follows waking"));
+  c.runAtTick(90,()->{c.assertFalse(e.resting(),"Rest cycle completes");c.assertTrue(e.getTarget()==player,"Target kept for pursuit");e.discard();c.complete();});
+ }
+ @GameTest(templateName=EMPTY_STRUCTURE,tickLimit=20)
+ public void bazookaGripStaysInHandAndMuzzleFacesForward(TestContext c){
+  for(float progress:new float[]{.3f,.5f,.75f,1}){
+   var grip=BazookaPose.weapon(progress).transformPosition(new org.joml.Vector3f(BazookaPose.GRIP));
+   var hand=BazookaPose.arm(progress).transformPosition(new org.joml.Vector3f(-11.5f,51,0));
+   c.assertTrue(grip.distance(hand)<.0001f,"Weapon grip stays constrained to hand");
+  }
+  var forward=BazookaPose.weapon(1).transformDirection(new org.joml.Vector3f(0,0,-1)).normalize();c.assertTrue(forward.z<-.999f,"Muzzle points forwards, not backwards");c.complete();
+ }
+ @GameTest(templateName=EMPTY_STRUCTURE,tickLimit=20)
+ public void oldWorldHealthMigratesToFiveHundred(TestContext c){
+  var old=Terror.LULA.create(c.getWorld());old.getAttributeInstance(net.minecraft.entity.attribute.EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(80);old.setHealth(79);
+  var n=new NbtCompound();old.writeCustomDataToNbt(n);var updated=Terror.LULA.create(c.getWorld());updated.readCustomDataFromNbt(n);
+  c.assertEquals(updated.getMaxHealth(),500f,"Old saved attributes upgraded");c.assertEquals(updated.getHealth(),499f,"Existing one-point injury preserved");old.discard();updated.discard();c.complete();
+ }
  @GameTest(templateName=EMPTY_STRUCTURE,tickLimit=40)
  public void formsPersistWithoutHealing(TestContext c){
   var p=c.createMockPlayer(GameMode.SURVIVAL);
   for(var type:java.util.List.of(Terror.LULA,Terror.BOLSONARO)){
    var e=type.create(c.getWorld());e.setNoGravity(true);c.getWorld().spawnEntity(e);
    c.assertFalse(e.mounted(),"Egg form starts on foot");e.damage(c.getWorld().getDamageSources().playerAttack(p),1);
-   c.assertTrue(e.mounted(),"Hit transforms entity");c.assertEquals(e.getHealth(),79f,"Transformation preserves remaining health");
-   var state=new NbtCompound();e.writeCustomDataToNbt(state);var restored=type.create(c.getWorld());restored.readCustomDataFromNbt(state);c.assertTrue(restored.mounted(),"Mounted state persists");c.assertEquals(restored.getHealth(),79f,"Health persists");e.discard();restored.discard();
+   c.assertTrue(e.mounted(),"Hit transforms entity");c.assertEquals(e.getHealth(),499f,"Transformation preserves remaining health");
+   var state=new NbtCompound();e.writeCustomDataToNbt(state);var restored=type.create(c.getWorld());restored.readCustomDataFromNbt(state);c.assertTrue(restored.mounted(),"Mounted state persists");c.assertEquals(restored.getHealth(),499f,"Health persists");e.discard();restored.discard();
   }c.complete();
  }
  @GameTest(templateName=EMPTY_STRUCTURE,tickLimit=90)
@@ -54,8 +79,8 @@ public class TerrorTests implements FabricGameTest {
   var p=c.createMockPlayer(GameMode.SURVIVAL);p.setPosition(Vec3d.ofBottomCenter(c.getAbsolutePos(new BlockPos(2,1,1))));p.setYaw(0);p.setPitch(0);
   var e=Terror.LULA.create(c.getWorld());e.setPosition(Vec3d.ofBottomCenter(c.getAbsolutePos(new BlockPos(2,1,6))));e.setNoGravity(true);e.setAiDisabled(true);c.getWorld().spawnEntity(e);
   for(int y=1;y<6;y++)c.setBlockState(2,y,4,Blocks.STONE);
-  var s=new ItemStack(Terror.REVOLVER);p.setStackInHand(Hand.MAIN_HAND,s);Gun.rounds(s,2);Terror.REVOLVER.use(c.getWorld(),p,Hand.MAIN_HAND);c.assertEquals(e.getHealth(),80f,"Wall blocks hitscan");
+  var s=new ItemStack(Terror.REVOLVER);p.setStackInHand(Hand.MAIN_HAND,s);Gun.rounds(s,2);Terror.REVOLVER.use(c.getWorld(),p,Hand.MAIN_HAND);c.assertEquals(e.getHealth(),500f,"Wall blocks hitscan");
   for(int y=1;y<6;y++)c.setBlockState(2,y,4,Blocks.AIR);
-  p.getItemCooldownManager().set(Terror.REVOLVER,0);Terror.REVOLVER.use(c.getWorld(),p,Hand.MAIN_HAND);c.assertEquals(e.getHealth(),74f,"Clear hit deals six damage");e.discard();c.complete();
+  p.getItemCooldownManager().set(Terror.REVOLVER,0);Terror.REVOLVER.use(c.getWorld(),p,Hand.MAIN_HAND);c.assertEquals(e.getHealth(),494f,"Clear hit deals six damage");e.discard();c.complete();
  }
 }

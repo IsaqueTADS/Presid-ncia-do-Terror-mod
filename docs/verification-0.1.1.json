@@ -1,0 +1,21 @@
+{
+  "version": "0.1.1",
+  "server_tests_passed": 10,
+  "tests": [
+    "terrortests.bazookagripstaysinhandandmuzzlefacesforward",
+    "terrortests.formspersistwithouthealing",
+    "terrortests.oldworldhealthmigratestofivehundred",
+    "terrortests.partialreloadloadsonlyavailableammo",
+    "terrortests.revolvercannotshootthroughwall",
+    "terrortests.revolverconsumesoneroundandrespectscooldown",
+    "terrortests.switchingweaponcancelsreload",
+    "terrortests.rockethitswallanddestroysblocks",
+    "terrortests.sleepingmountwakesbeforechasing",
+    "terrortests.bolsonarowaitsfifteensecondsbeforerocket"
+  ],
+  "runtime_audio_files": 23,
+  "audio_decoded_mono_vorbis": true,
+  "jar_sha256": "a0c3ee4fd5925d13247e6da02caf4645a0096eff153990c7900001ba3899ccc7",
+  "client_opened": false,
+  "manual_review": "Requested by user; movement, graphics and audio approval pending."
+}

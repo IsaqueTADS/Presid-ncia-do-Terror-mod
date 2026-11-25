@@ -1,0 +1,258 @@
+{
+  "files": [
+    {
+      "event": "human_step",
+      "source": "audio/cleared/passos/humano/01-footstep_0.ogg",
+      "source_sha256": "33c9bef5e8aeb1069455699a34a0c5e1ef1787fd3f61594b0859d7e6bb9f9dec",
+      "source_url": "https://opengameart.org/content/footsteps-0",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/human_step_0.ogg",
+      "sha256": "887108a72816e63160b38bfbd891e2397e86e20b66dc02367f5a9921047975b6",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "human_step",
+      "source": "audio/cleared/passos/humano/02-footstep.ogg",
+      "source_sha256": "f05396c807eb8eaecffb2a1ead611ec971c5a7914d1d081c91d7796e852692a2",
+      "source_url": "https://opengameart.org/content/footsteps-0",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/human_step_1.ogg",
+      "sha256": "b464801cb7fb216222a595aa50537d75d939d04c0c1f0b444bdc6727b624d228",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "human_step",
+      "source": "audio/cleared/passos/humano/03-footstep.ogg",
+      "source_sha256": "9817cc93897ed1de5da87675b26be4196bfda3daa6f1de9dc4398a68d250cdb9",
+      "source_url": "https://opengameart.org/content/footsteps-0",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/human_step_2.ogg",
+      "sha256": "a9f41f68df00997cb293a0a90560b8d72a3eb415989925538cfbecf221e0aaaa",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "human_step",
+      "source": "audio/cleared/passos/humano/04-footstep.ogg",
+      "source_sha256": "b373ff981e44d6f7ba2291225a4803078771029615ed81606136fdb9599906d5",
+      "source_url": "https://opengameart.org/content/footsteps-0",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/human_step_3.ogg",
+      "sha256": "b997222f843386519e9fcb6d41565eb09c06ffb82ca24172edb741c355e869c1",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "human_step",
+      "source": "audio/cleared/passos/humano/05-footstep.ogg",
+      "source_sha256": "f1b4893dd3cebe23438567a0dcaf047848a52b594e7eb03e5c212d99e83d2298",
+      "source_url": "https://opengameart.org/content/footsteps-0",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/human_step_4.ogg",
+      "sha256": "7a0d0f569b6b26680f8b13c0eafae088046931cda51935ed42807ee6c43cf28a",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "human_step",
+      "source": "audio/cleared/passos/humano/06-footstep.ogg",
+      "source_sha256": "39147cc1b98abb4b5378ad07b15d50d18f2aa0f0fd2f5514f078c1e574d14773",
+      "source_url": "https://opengameart.org/content/footsteps-0",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/human_step_5.ogg",
+      "sha256": "2f6ce3f52f8c5056a1cff360ceba9a29acd0bac0d0af5a4d30e7f422e705a4d6",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "trex_step",
+      "source": "audio/cleared/passos/trex/01-footstep_0.ogg",
+      "source_sha256": "dcfe2c584e878431613528cff97c5dd27c6558dc3121b97e0ed0b37093d4df8c",
+      "source_url": "https://opengameart.org/content/footsteps-0",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/trex_step_0.ogg",
+      "sha256": "e2a6224a0dc9b62142b8d7ebe24f530d69d709b60263bf5edcade885f53bfe51",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "trex_step",
+      "source": "audio/cleared/passos/trex/02-footstep.ogg",
+      "source_sha256": "70a1ab814de03f42d23dff029ad09b2b390037718569b7fad15fe9d8b4a253e9",
+      "source_url": "https://opengameart.org/content/footsteps-0",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/trex_step_1.ogg",
+      "sha256": "63f5e17bc6e17e584ab8ee87e81d325d3e38c2686bf672982bf8f99491f2c2a6",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "trex_step",
+      "source": "audio/cleared/passos/trex/03-footstep.ogg",
+      "source_sha256": "93a5f5ea24b63a97546c1356b10dede2187969b6abb1192bd698e4dd216e0242",
+      "source_url": "https://opengameart.org/content/footsteps-0",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/trex_step_2.ogg",
+      "sha256": "3fa100be3f18c419142a573e465401a916481fb4313965366a9abfa1feea7bed",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "donkey_step",
+      "source": "audio/cleared/jumento/cascos/wood_01.ogg",
+      "source_sha256": "55d4527a1f7d8e158eff0921f7a533340ab6be69a7b9b52fdac7a19b9d8e1cb2",
+      "source_url": "https://opengameart.org/content/80-cc0-rpg-sfx",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/donkey_step_0.ogg",
+      "sha256": "090ee7549981201d03f4c2f431790ff86e452d1498b55b5df3497229efc6d20d",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "donkey_step",
+      "source": "audio/cleared/jumento/cascos/wood_02.ogg",
+      "source_sha256": "e64b95a1ec7675f28f8837ee4e4e81aa8e5b28e272159a0b3ed124fed037fc4f",
+      "source_url": "https://opengameart.org/content/80-cc0-rpg-sfx",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/donkey_step_1.ogg",
+      "sha256": "3c39204c51383010ae3d3fcd0347a302280e4b97c2a78907335c0e70cfec89df",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "donkey_voice",
+      "source": "audio/cleared/montarias/jumento-zurro.mp3",
+      "source_sha256": "58f10d4d533994cebb349aee44fe6973c55a59118cd672da0bfc3699217a784c",
+      "source_url": "https://freesound.org/people/craigsmith/sounds/675411/",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/donkey_voice_0.ogg",
+      "sha256": "7098cb7153a5e74e99b52f5d19fa555e542ae16fb5204a13245ff9c506b96864",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "trex_voice",
+      "source": "audio/cleared/trex/vocalizacoes/creature_roar_01.ogg",
+      "source_sha256": "ca1b9198490f29037e6e6487dd6db6165ca8b2583a445c0edd6b9f474d2d1f5f",
+      "source_url": "https://opengameart.org/content/80-cc0-rpg-sfx",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/trex_voice_0.ogg",
+      "sha256": "6f8f12c95b445e2dd3be29a2f67e53a7830bc2bf28b87f0b8d8556d8be64321d",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "trex_voice",
+      "source": "audio/cleared/trex/vocalizacoes/creature_roar_02.ogg",
+      "source_sha256": "4da0cf77a3506e1b573ec40e3688dc66400d1734853510db357fb3f843cde242",
+      "source_url": "https://opengameart.org/content/80-cc0-rpg-sfx",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/trex_voice_1.ogg",
+      "sha256": "9d8e7388b1e37e4b2076f7deb72d160e29ad3aabffae1e8e1d0cdb26305284b1",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "creature_hurt",
+      "source": "audio/cleared/trex/vocalizacoes/creature_hurt_01.ogg",
+      "source_sha256": "9948f9ce067e1aae7bd780e974d51ceae03f2611a52afffb0e092ba47e9dc8e1",
+      "source_url": "https://opengameart.org/content/80-cc0-rpg-sfx",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/creature_hurt_0.ogg",
+      "sha256": "564c1802a917c57661762a7f12e20a5a17e2a3a5ee8e26346447c7debf4b98c6",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "creature_hurt",
+      "source": "audio/cleared/trex/vocalizacoes/creature_hurt_02.ogg",
+      "source_sha256": "a4ea983e62ace874754c51d78239bd8b6532227119bd511c38fa827b2ccbca70",
+      "source_url": "https://opengameart.org/content/80-cc0-rpg-sfx",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/creature_hurt_1.ogg",
+      "sha256": "c0135908df405f802bbf0a40755568c5333bd7dab95e001fba17956d0a95ddff",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "transform",
+      "source": "audio/cleared/transformacao/spell_01.ogg",
+      "source_sha256": "09821a53c418c5eeeac4fa25bada9d245e822fed302eeeae9ae4151522a45ae5",
+      "source_url": "https://opengameart.org/content/80-cc0-rpg-sfx",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/transform_0.ogg",
+      "sha256": "9534dd517d1f7bb882c59d7037d48152f0960a027236042aeb1cbe48567950b8",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "transform",
+      "source": "audio/cleared/transformacao/spell_02.ogg",
+      "source_sha256": "bf9c48b76921e56aa266172d969a2c08215d6ce0ffae7c3584f23fa05d3f8bd4",
+      "source_url": "https://opengameart.org/content/80-cc0-rpg-sfx",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/transform_1.ogg",
+      "sha256": "0c84fcbdcaee78797738fd93d70ffce56256695ebec3171b84b59538582f63ed",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "swish",
+      "source": "audio/cleared/movimento/blade_01.ogg",
+      "source_sha256": "caf7a7cb9b25cda4bd487c1d12d18b74a34bb18c816fd67277cf3c8d7ef32a3a",
+      "source_url": "https://opengameart.org/content/80-cc0-rpg-sfx",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/swish_0.ogg",
+      "sha256": "aee1e1f4fa24061f793294dc020362ae1104aff4279b7c6c4a2a0d1f649edcd1",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "swish",
+      "source": "audio/cleared/movimento/blade_02.ogg",
+      "source_sha256": "c770afec8f62f14d3d082d5437c5cec28e2751d393df645ddd938eabc2588abd",
+      "source_url": "https://opengameart.org/content/80-cc0-rpg-sfx",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/swish_1.ogg",
+      "sha256": "7e53d77d236cba66a369d6238e2406dc48b87d95079417447ec9d15de491d5ee",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "impact",
+      "source": "audio/cleared/impactos/stones_01.ogg",
+      "source_sha256": "d11ce95031c2c36ae2a00979620fa95a7a3f5c6d6f2ac86962ed292aa556be8d",
+      "source_url": "https://opengameart.org/content/80-cc0-rpg-sfx",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/impact_0.ogg",
+      "sha256": "2255f81bdcdb2005d8f5b6f55dce2b7a08dae17aac08ff9539f34967deb5dd02",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "impact",
+      "source": "audio/cleared/impactos/stones_02.ogg",
+      "source_sha256": "57dc6b85ee986e68ddc4b7fb2b41cc1c885151677d32439fdb299492a3103a65",
+      "source_url": "https://opengameart.org/content/80-cc0-rpg-sfx",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/impact_1.ogg",
+      "sha256": "5f3426c64a1875121ec0b22c50632df2c3d60ae8d0b0d0a196b84de2eea7cac3",
+      "channels": 1,
+      "sample_rate": 22050
+    },
+    {
+      "event": "reload",
+      "source": "audio/cleared/acoes/item_coins_01.ogg",
+      "source_sha256": "4e701b281a4f88768beccbe87af4574d13ac5a4bc5cab6c522f0e79823d6e428",
+      "source_url": "https://opengameart.org/content/80-cc0-rpg-sfx",
+      "licence": "CC0-1.0",
+      "output": "src/main/resources/assets/presidencia_terror/sounds/runtime/reload_0.ogg",
+      "sha256": "8a9fac05c6e7dc6fc2ecc0866cfd937eabf0b85aa31ccad13825905ed7c268ba",
+      "channels": 1,
+      "sample_rate": 22050
+    }
+  ],
+  "meme_pack": "Local only; rights unverified; not inside the distributed JAR."
+}
