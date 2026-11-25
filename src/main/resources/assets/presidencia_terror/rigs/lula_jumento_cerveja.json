@@ -26790,8 +26790,8 @@
       "name": "cerveja.png",
       "uuid": "ff342859-b4db-52fb-82ba-e55a0e136eda",
       "id": "1",
-      "width": 128,
-      "height": 128,
+      "width": 512,
+      "height": 512,
       "uv_width": 128,
       "uv_height": 128
     }

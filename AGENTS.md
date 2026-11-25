@@ -19,3 +19,5 @@
 - Versão vigente 0.2.0: ler docs/V020.md e a seção final de docs/CONTEXTO.md; feedback anterior integrado, recorte de voz de morte aprovado pelo usuário. Teste manual a cargo do usuário.
 
 - Versão 0.2.1: identidade BXE Enterprise implementada após autorização. Ler docs/BXE_0.2.1.md; planejamento anterior é histórico.
+
+- Versão atual 0.2.2: rótulos revisados aprovados pelo usuário; veja docs/CONTEXTO.md.

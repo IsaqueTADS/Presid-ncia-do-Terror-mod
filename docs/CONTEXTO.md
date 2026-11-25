@@ -124,3 +124,8 @@ Prévia plana: visual-assets/previews/cerveja-frente-verso-revisao.png (caminho 
 Usuário pediu Enterprise também abaixo de BXE na bazuca e no revólver. Aplicado aos selos laterais existentes, somente nas fontes de assets; textura 512×512 com UV lógico 128×128. Geometria, hierarquia e animações preservadas por comparação antes/depois. Prévia ampliada em visual-assets/previews/bxe-enterprise-armas-revisao.png; SVG e PNG em visual-assets/branding/bxe-enterprise/badge-enterprise-review.*. Não houve nova inspeção no Blockbench nem integração no mod nesta etapa. O tamanho aparente no jogo ainda depende da escala do item.
 
 Reaplicar após o gerador antigo com tools/review_weapon_branding.py. Para preservar todas as propostas: apply_bxe_branding.py, review_beer_label.py, review_weapon_branding.py. Continuar sem exportar/integrar até o usuário avaliar a cerveja e os selos. JAR permanece 0.2.1 publicado anteriormente.
+
+
+## Integração aprovada — 0.2.2
+
+Usuário autorizou atualizar o mod com os rótulos e selos revisados. Cerveja: CERVEJA na frente, símbolo/BXE/Enterprise no verso; armas com Enterprise abaixo de BXE. Integrar fontes atuais sem regenerar modelos, preservando revisões, animações e receitas. Exportador direcionado tools/integrate_reviewed_branding.py; manifesto de origem e hashes de texturas em mod/docs. Texturas físicas 512×512, UV lógico 128×128 compatível com a normalização do renderer. Aprovação substitui as pendências de avaliação/integrar acima. Versão 0.2.2 diferencia este JAR da 0.2.1 anterior. Verificação de empacotamento/build; cliente Minecraft não aberto, teste final permanece manual.

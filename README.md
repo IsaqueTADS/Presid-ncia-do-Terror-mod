@@ -2,7 +2,7 @@
 
 Para retomar o trabalho em outro chat, leia [AGENTS.md](AGENTS.md) e [docs/CONTEXTO.md](docs/CONTEXTO.md). O contexto registra decisões, estado real e pendências, com referências ao repositório de assets.
 
-Versão jogável **0.2.1**, para Minecraft Java 1.21.1, Fabric e Java 21. Nome escolhido pelo usuário em 25/11/2026.
+Versão jogável **0.2.2**, para Minecraft Java 1.21.1, Fabric e Java 21. Nome escolhido pelo usuário em 25/11/2026.
 
 Novo na 0.1.2: Lula bebe cerveja e balança o tronco em um evento ocasional, nas versões a pé e montada. Som vanilla de beber, 4 s de gole + 5 s de atuação cômica. Não começa durante combate; o evento não altera a vida ou a velocidade. Na 0.2.0 a garrafa também é item craftável; consulte docs/V020.md.
 
@@ -12,7 +12,7 @@ Inclui revólver, bazuca, munições craftáveis e dois ovos. Ambos os personage
 
 Use botão direito para disparar e **R** para recarregar. Armas são criadas vazias; munição deve estar no inventário. Revólver: seis cartuchos, 2,8 s de recarga. Bazuca: um foguete, 2,4 s. Posições carregadas do tambor ficam amarelas; uma carga parcial continua parcial durante a recarga e só recebe os cartuchos disponíveis ao concluir. Trocar de slot, largar a arma, morrer ou desconectar cancela a recarga sem consumir munição. No criativo, a recarga é gratuita e o tiro não gasta a carga.
 
-Instale Fabric Loader e Fabric API compatíveis com 1.21.1, e copie `build/libs/presidencia-do-terror-0.2.1.jar` para `mods` (cliente e servidor), substituindo o JAR anterior. Não usar o JAR `-sources`. Não exige GeckoLib: o renderer próprio preserva cubos e malhas arredondadas dos modelos.
+Instale Fabric Loader e Fabric API compatíveis com 1.21.1, e copie `build/libs/presidencia-do-terror-0.2.2.jar` para `mods` (cliente e servidor), substituindo o JAR anterior. Não usar o JAR `-sources`. Não exige GeckoLib: o renderer próprio preserva cubos e malhas arredondadas dos modelos.
 
 Leia [TESTAR_V1.md](docs/TESTAR_V1.md) para instalação, comandos, balanceamento, receitas e limites de verificação. As imagens das quatro receitas ficam em `../visual-assets/previews/craft-*.png` e na prancha `crafts-v1.png`.
 
@@ -32,3 +32,6 @@ Garrafa corrigida, vozes contextuais no pacote local opcional e feedback de jogo
 
 
 Atualização visual 0.2.1: marca BXE Enterprise na cerveja, bazuca e revólver. Ver [BXE_0.2.1.md](docs/BXE_0.2.1.md).
+
+
+0.2.2: rótulo CERVEJA na frente e BXE/Enterprise no verso; selos completos BXE Enterprise nas armas, texturas 512×512.

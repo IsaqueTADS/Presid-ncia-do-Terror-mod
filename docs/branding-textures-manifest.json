@@ -1,0 +1,14 @@
+{
+  "revision": "681a0b51fbb9979cd4bd94f7be62fb87a952d7d8",
+  "textures": {
+    "bazuca.png": "dc08f0924685ad400e40ef4f7d6ff6fdea49a00f7f4c6e0c7b8c7c88bc0797eb",
+    "bxe_badge.png": "962d59e3b9d6b8f701a8199ba624e5dfc05a54bbeb5f655660bfde9ca503423d",
+    "revolver.png": "dc08f0924685ad400e40ef4f7d6ff6fdea49a00f7f4c6e0c7b8c7c88bc0797eb",
+    "cerveja.png": "e852e5ccdfb385b28a3e52223a0765558f0e6d0a028ab99a94f5e782114a7f2e",
+    "lula.png": "8ed318b0f5a68fc1ed4bee6305683142ba6bd11441b72e6f95156da7824df7e9",
+    "lula_jumento.png": "8ed318b0f5a68fc1ed4bee6305683142ba6bd11441b72e6f95156da7824df7e9"
+  },
+  "uv_units": 128,
+  "physical_texture_size": 512,
+  "scope": "Approved beer front/rear and full-name weapon labels"
+}

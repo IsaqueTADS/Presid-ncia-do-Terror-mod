@@ -17189,8 +17189,8 @@
       "name": "bxe_badge.png",
       "id": "1",
       "uuid": "90ed818f-d996-582a-9917-2a74a2801f2a",
-      "width": 128,
-      "height": 128,
+      "width": 512,
+      "height": 512,
       "uv_width": 128,
       "uv_height": 128
     }
