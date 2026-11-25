@@ -141,3 +141,8 @@ Não implementado nesta etapa. Versão e JAR permanecem 0.2.2; incluir no planej
 ## Planejamento 0.3
 
 Novos pedidos registrados, sem implementar: spawn inicial automático da dupla, acompanhamento/observação, memes contextuais, transformação ao ataque, teleporte de recuperação a cada 30 s inclusive com chunk descarregada e após respawn, descanso perto do jogador; cerveja no loot do Lula e carne nomeada Picanha. Aba criativa anterior incluída. Multiplayer, dimensões, respawn definitivo dos bosses e quantidades ainda requerem decisões. Lista completa, dano vigente e propostas não aprovadas em [PLANEJAMENTO_0.3.md](PLANEJAMENTO_0.3.md). Versão/JAR continuam 0.2.2. Usuário relatou boa jogabilidade e uso das animações no teste manual.
+
+
+## Atualização oficial da lista 0.3 — combate
+
+Usuário aceitou as propostas anteriores de perseguição/descanso/multiplayer/falas/vitória e loot; passaram à lista oficial. Novo pedido: revólver base 12, última bala +50%, HS 17 e exceção último HS no Lula exatamente 22; tooltip explicativa e números flutuantes de dano para revólver/bazuca. Complementos e ambiguidades registrados em mod/docs/PLANEJAMENTO_0.3.md. Distância de três metros foi exemplo, não regra numérica. Bônus da última bala não se aplica automaticamente à bazuca de um foguete. Apenas planejamento; versão 0.2.2 e código mantidos.
