@@ -110,3 +110,10 @@ Usuário aprovou por audição o corte bolsonaro_death de 3,00 s até o fim; fon
 ## Estado vigente — 0.2.1
 
 Usuário autorizou executar BXE Enterprise. Marca aplicada aos três itens e às garrafas das duas atuações do Lula, com fonte SVG/pixel art, texturas e previews versionados. Animações, gameplay e receitas preservados. Itens estáticos conferidos no Blockbench; teste visual no Minecraft permanece manual. Detalhes em [BXE_0.2.1.md](BXE_0.2.1.md). Substitui a etapa anterior de coleta de pedidos. Corte bolsonaro_death aprovado pelo usuário.
+
+
+## Revisão do rótulo aguardando avaliação
+
+Pedido posterior à 0.2.1: frente somente CERVEJA; verso símbolo + BXE e Enterprise abaixo, com texto legível. Textura aumentada para 512×512 mantendo UV lógico 128×128. Aplicada somente às fontes de assets (garrafa separada e duas variantes do Lula); nenhuma mudança exportada ao mod/JAR. Elementos, hierarquia e animações comparados ao Git anterior e preservados.
+
+Prévia plana: visual-assets/previews/cerveja-frente-verso-revisao.png (caminho a partir da pasta do projeto). Fonte separada aberta no Blockbench: visual-assets/models/cerveja/cerveja-revisao-rotulo.bbmodel. Aba anterior cerveja tinha alterações não salvas; cancelado fechamento e mantida intacta. Conferida frente da fonte revisada no aplicativo. Usuário deve avaliar antes de integrar/atualizar o mod. Não executar export_v1.py/prepare_v020.py por enquanto. Para reaplicar esta proposta, review_beer_label.py depois de apply_bxe_branding.py; o gerador de branding anterior ainda cria o rótulo antigo.
